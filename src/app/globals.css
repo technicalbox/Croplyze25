@@ -1,0 +1,139 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root,
+  [data-theme='light'] {
+    --background: 206 43% 97%; /* #F6F9FB */
+    --foreground: 212 40% 10%; /* #0F1724 */
+    --card: 0 0% 100%; /* #FFFFFF */
+    --card-foreground: 212 40% 10%; /* #0F1724 */
+    --popover: 0 0% 100%; /* #FFFFFF */
+    --popover-foreground: 212 40% 10%; /* #0F1724 */
+
+    --primary-raw: 161 90% 25%; /* #047857 */
+    --primary: var(--primary-raw);
+    --primary-foreground: 0 0% 100%; /* #FFFFFF */
+    --primary-hover: 161 90% 20%;
+
+    --secondary: 206 33% 95%; /* #F0F5F8 */
+    --secondary-foreground: 211 27% 17%; /* #1F2B37 */
+    --muted: 206 33% 95%; /* #F0F5F8 */
+    --muted-foreground: 214 16% 39%; /* #556173 */
+    --accent-raw: 187 95% 43%; /* #06B6D4 */
+    --accent: var(--accent-raw);
+    --accent-foreground: 0 0% 100%;
+
+    --destructive-raw: 0 72% 51%; /* #DC2626 */
+    --destructive: var(--destructive-raw);
+    --destructive-foreground: 0 0% 100%;
+    
+    --success-raw: 161 93% 31%; /* #059669 */
+    --success: var(--success-raw);
+    --success-foreground: hsl(var(--success-raw));
+    --success-background: hsla(var(--success-raw), 0.12);
+
+    --warning-raw: 39 92% 51%; /* #D97706 */
+    --warning: var(--warning-raw);
+    --warning-foreground: hsl(var(--warning-raw));
+    --warning-background: hsla(var(--warning-raw), 0.12);
+    
+    --info-raw: 200 98% 39%; /* #0284C7 */
+    --info: var(--info-raw);
+    --info-foreground: hsl(var(--info-raw));
+    --info-background: hsla(var(--info-raw), 0.12);
+
+    --border: 208 35% 91%; /* #E6EEF3 */
+    --input: 208 35% 91%;
+    --ring: var(--primary-raw);
+
+    --primary-soft-bg: 160 88% 95%; /* #E8FCEE */
+
+    --chart-1: 161 93% 31%;
+    --chart-2: 158 69% 45%;
+    --chart-3: 187 95% 43%;
+    --chart-4: 39 92% 51%;
+    --chart-5: 0 72% 51%;
+  }
+
+  [data-theme='dark'] {
+    --background: 212 47% 7%; /* #07101A */
+    --foreground: 195 27% 92%; /* #E6F0F2 */
+    --card: 208 53% 13%; /* #0F2130 */
+    --card-foreground: 195 27% 92%;
+    --popover: 208 53% 13%;
+    --popover-foreground: 195 27% 92%;
+
+    --primary-raw: 158 80% 43%; /* #16C784 */
+    --primary: var(--primary-raw);
+    --primary-foreground: 212 47% 7%; /* #07101A */
+    --primary-hover: 155 81% 37%; /* #12B96A */
+    
+    --secondary: 205 44% 15%; /* #152A36 */
+    --secondary-foreground: 197 29% 88%; /* #D6E6EA */
+    --muted: 206 33% 15%; /* #1A2A33 */
+    --muted-foreground: 211 11% 65%; /* #9AA6B2 */
+
+    --accent-raw: 187 84% 53%; /* #22D3EE */
+    --accent: var(--accent-raw);
+    --accent-foreground: 212 40% 10%; /* #0F1724 */
+
+    --destructive-raw: 0 84% 60%; /* #EF4444 */
+    --destructive: var(--destructive-raw);
+    --destructive-foreground: 195 27% 92%;
+    
+    --success-raw: 142 71% 45%; /* #22C55E */
+    --success: var(--success-raw);
+    --success-foreground: hsl(var(--success-raw));
+    --success-background: hsla(var(--success-raw), 0.12);
+
+    --warning-raw: 38 92% 50%; /* #F59E0B */
+    --warning: var(--warning-raw);
+    --warning-foreground: hsl(var(--warning-raw));
+    --warning-background: hsla(var(--warning-raw), 0.12);
+
+    --info-raw: 196 96% 56%; /* #38BDF8 */
+    --info: var(--info-raw);
+    --info-foreground: hsl(var(--info-raw));
+    --info-background: hsla(var(--info-raw), 0.12);
+    
+    --border: 205 32% 18%; /* #20313B */
+    --input: 205 32% 18%;
+    --ring: var(--primary-raw);
+    
+    --primary-soft-bg: 158 58% 14%; /* #0E3A2C */
+
+    --chart-1: 158 80% 43%;
+    --chart-2: 142 71% 45%;
+    --chart-3: 187 84% 53%;
+    --chart-4: 38 92% 50%;
+    --chart-5: 0 84% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html, body {
+    @apply overflow-x-hidden;
+  }
+  body {
+    @apply bg-background text-foreground;
+    line-height: 1.7;
+    touch-action: pan-y;
+  }
+}
+
+@layer components {
+  .mobile-container {
+    max-width: 420px;
+    margin: auto;
+    padding: 12px;
+    min-height: 100vh;
+    overflow-x: hidden;
+    box-sizing: border-box;
+    padding-bottom: 80px;
+  }
+}

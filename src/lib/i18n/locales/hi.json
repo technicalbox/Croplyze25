@@ -1,0 +1,52 @@
+{
+  "header": {
+    "dashboard": "डैशबोर्ड",
+    "newScan": "नया स्कैन",
+    "myAccount": "मेरा खाता",
+    "profile": "प्रोफ़ाइल",
+    "support": "सहायता",
+    "logout": "लॉग आउट",
+    "language": "हिन्दी",
+    "languageUpdateTitle": "भाषा सेटिंग अपडेट की गई",
+    "languageUpdateDescription": "भाषा को पर सेट कर दिया गया है"
+  },
+  "dashboard": {
+      "title": "डैशबोर्ड",
+      "exportPdf": "पीडीएफ निर्यात करें",
+      "newScan": "नया स्कैन",
+      "historyTitle": "फसल स्वास्थ्य इतिहास",
+      "historyDescription": "आपके सभी पिछले निदानों का एक लॉग।",
+      "noHistoryTitle": "कोई पिछला निदान नहीं",
+      "noHistoryDescription": "अपना इतिहास यहां देखने के लिए अपना पहला स्कैन शुरू करें।",
+      "frequencyTitle": "रोग आवृत्ति",
+      "frequencyDescription": "इस मौसम में पता चले रोगों का अवलोकन।",
+      "alertTitle": "प्रारंभिक प्रकोप चेतावनी!",
+      "alertDescription": "आपके क्षेत्र में फसल रोग की उच्च घटना की सूचना मिली है। अपनी फसलों की बारीकी से निगरानी करें और निवारक उपायों पर विचार करें।",
+      "historyTable": {
+        "image": "छवि",
+        "crop": "फ़सल",
+        "diagnosis": "निदान",
+        "severity": "गंभीरता",
+        "date": "तारीख",
+        "actions": "क्रियाएँ",
+        "viewDetails": "विवरण देखें",
+        "healthy": "स्वस्थ",
+        "severityLevel": {
+          "low": "कम",
+          "medium": "मध्यम",
+          "high": "उच्च",
+          "notApplicable": "लागू नहीं"
+        }
+      },
+      "deleteDialog": {
+        "title": "क्या आप पूरी तरह निश्चित हैं?",
+        "description": "यह कार्रवाई पूर्ववत नहीं की जा सकती। यह आपके इतिहास से \"{cropType}\" के लिए निदान को स्थायी रूप से हटा देगा।",
+        "cancel": "रद्द करें",
+        "delete": "हटाएं",
+        "successTitle": "निदान हटा दिया गया",
+        "successDescription": "\"{cropType}\" के लिए निदान हटा दिया गया है।",
+        "errorTitle": "हटाने में विफल",
+        "errorDescription": "निदान को हटाया नहीं जा सका। कृपया पुनः प्रयास करें।"
+      }
+  }
+}
