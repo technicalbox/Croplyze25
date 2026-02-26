@@ -1,0 +1,52 @@
+{
+  "header": {
+    "dashboard": "لوحة القيادة",
+    "newScan": "مسح جديد",
+    "myAccount": "حسابي",
+    "profile": "الملف الشخصي",
+    "support": "الدعم",
+    "logout": "تسجيل الخروج",
+    "language": "العربية",
+    "languageUpdateTitle": "تم تحديث إعداد اللغة",
+    "languageUpdateDescription": "تم ضبط اللغة على"
+  },
+  "dashboard": {
+      "title": "لوحة القيادة",
+      "exportPdf": "تصدير PDF",
+      "newScan": "مسح جديد",
+      "historyTitle": "تاريخ صحة المحاصيل",
+      "historyDescription": "سجل لجميع تشخيصاتك السابقة.",
+      "noHistoryTitle": "لا توجد تشخيصات سابقة",
+      "noHistoryDescription": "ابدأ أول فحص لك لترى سجلك هنا.",
+      "frequencyTitle": "تردد المرض",
+      "frequencyDescription": "نظرة عامة على الأمراض المكتشفة هذا الموسم.",
+      "alertTitle": "إنذار مبكر بتفشي المرض!",
+      "alertDescription": "تم الإبلاغ عن نسبة عالية من أمراض المحاصيل في منطقتك. راقب محاصيلك عن كثب وفكر في اتخاذ تدابير وقائية.",
+      "historyTable": {
+        "image": "صورة",
+        "crop": "محصول",
+        "diagnosis": "تشخيص",
+        "severity": "خطورة",
+        "date": "تاريخ",
+        "actions": "إجراءات",
+        "viewDetails": "عرض التفاصيل",
+        "healthy": "صحي",
+        "severityLevel": {
+          "low": "منخفض",
+          "medium": "متوسط",
+          "high": "مرتفع",
+          "notApplicable": "غير قابل للتطبيق"
+        }
+      },
+      "deleteDialog": {
+        "title": "هل أنت متأكد تمامًا؟",
+        "description": "لا يمكن التراجع عن هذا الإجراء. سيؤدي هذا إلى حذف التشخيص الخاص بـ \"{cropType}\" نهائيًا من سجلك.",
+        "cancel": "إلغاء",
+        "delete": "حذف",
+        "successTitle": "تم حذف التشخيص",
+        "successDescription": "تمت إزالة التشخيص الخاص بـ \"{cropType}\".",
+        "errorTitle": "فشل الحذف",
+        "errorDescription": "تعذر حذف التشخيص. يرجى المحاولة مرة أخرى."
+      }
+  }
+}
