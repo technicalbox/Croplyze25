@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { useUser as useUserFromAuth } from '@/firebase/auth/use-user';
 import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
-import { ArrowLeft, Wheat, CalendarDays, ChevronRight, Sprout, BarChart3, Droplets, Bug } from 'lucide-react';
+import { ArrowLeft, Wheat, CalendarDays, ChevronRight, Sprout, BarChart3, Droplets, Bug, Tractor, TrendingUp, Package } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const TOOLS = [
@@ -29,6 +29,17 @@ const TOOLS = [
         featureIcons: [Droplets, Sprout, Bug],
         gradient: 'from-teal-600 to-cyan-700',
         shadow: 'shadow-teal-500/25',
+    },
+    {
+        href: '/harvest-optimizer',
+        icon: Tractor,
+        title: 'Harvest Optimizer',
+        description: 'Best harvest timing, readiness signs, yield tips, storage & market strategy.',
+        tag: 'New',
+        features: ['Harvest timing', 'Yield tips', 'Market strategy'],
+        featureIcons: [TrendingUp, Package, BarChart3],
+        gradient: 'from-amber-600 to-orange-700',
+        shadow: 'shadow-amber-500/25',
     },
 ];
 
@@ -121,11 +132,6 @@ export default function FarmingPartnerHubPage() {
                     })}
                 </div>
 
-                {/* Coming soon hint */}
-                <div className="border border-dashed border-border rounded-2xl p-5 flex flex-col items-center gap-2 text-center">
-                    <p className="text-sm font-semibold text-muted-foreground">More tools coming soon</p>
-                    <p className="text-xs text-muted-foreground">Harvest optimizer, market price alerts, weather advisory…</p>
-                </div>
             </main>
         </div>
     );

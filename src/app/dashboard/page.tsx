@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Download, History, Loader2, User, Bell, Wheat, ChevronRight, CalendarDays } from "lucide-react";
+import { Download, History, Loader2, User, Bell, Wheat, ChevronRight, CalendarDays, Tractor } from "lucide-react";
 import AlertBanner from "@/components/dashboard/alert-banner";
 import HistoryTable from "@/components/dashboard/history-table";
 import DiseaseChart from "@/components/dashboard/disease-chart";
@@ -160,6 +160,26 @@ export default function DashboardPage() {
                         </div>
                     </Link>
                 </div>
+
+                {/* Harvest Optimizer — full-width third card */}
+                <Link href="/harvest-optimizer" className="block active:scale-[0.98] transition-transform duration-150 animate-in fade-in-0 slide-in-from-bottom-2 duration-500">
+                    <div className="w-full rounded-2xl overflow-hidden relative bg-gradient-to-br from-amber-600 to-orange-700 text-white shadow-md shadow-amber-500/20">
+                        <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(circle at 85% 30%, white 0%, transparent 65%)' }} />
+                        <div className="relative flex items-center gap-4 p-4">
+                            <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-white/20 shrink-0">
+                                <Tractor className="h-5 w-5 text-white" />
+                            </div>
+                            <div className="flex-1 min-w-0">
+                                <div className="flex items-center gap-2 mb-0.5">
+                                    <p className="text-sm font-bold leading-tight">Harvest Optimizer</p>
+                                    <span className="text-[9px] font-bold bg-white/20 px-1.5 py-0.5 rounded-full">NEW</span>
+                                </div>
+                                <p className="text-[11px] text-white/70 leading-snug">Timing · Readiness Signs · Yield Tips · Storage · Market</p>
+                            </div>
+                            <ChevronRight className="h-4 w-4 text-white/40 shrink-0" />
+                        </div>
+                    </div>
+                </Link>
 
                 <div className="flex flex-col gap-4">
                     <Card className="w-full max-w-full rounded-2xl p-4 overflow-hidden break-words">
