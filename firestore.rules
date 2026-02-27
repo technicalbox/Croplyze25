@@ -31,5 +31,14 @@ service cloud.firestore {
     match /users/{userId}/harvest-optimizer/{reportId} {
       allow read, list, create, update, delete: if request.auth != null && request.auth.uid == userId;
     }
+
+    // Users can manage their own Farming Chatbot sessions and messages.
+    match /users/{userId}/chat-sessions/{sessionId} {
+      allow read, list, create, update, delete: if request.auth != null && request.auth.uid == userId;
+
+      match /messages/{messageId} {
+        allow read, list, create: if request.auth != null && request.auth.uid == userId;
+      }
+    }
   }
 }

@@ -5,6 +5,9 @@ import { TranslationProvider } from '@/lib/i18n';
 import BottomNav from '@/components/common/bottom-nav';
 import { NotificationProvider } from '@/providers/notification-provider';
 import PageTransitionWrapper from '@/components/common/page-transition-wrapper';
+import { ChatProvider } from '@/components/chatbot/chat-provider';
+import ChatFab from '@/components/chatbot/chat-fab';
+import ChatModal from '@/components/chatbot/chat-modal';
 
 export const metadata: Metadata = {
   title: 'Croplyze',
@@ -26,18 +29,23 @@ export default function RootLayout({
       </head>
       <body className="font-body antialiased bg-background overflow-x-hidden" style={{ touchAction: 'pan-y' }}>
         <FirebaseClientProvider>
-            <NotificationProvider>
-              <TranslationProvider>
+          <NotificationProvider>
+            <TranslationProvider>
+              <ChatProvider>
                 <div className="flex flex-col min-h-screen mobile-container">
                   <main className="flex-1 flex flex-col">
-                      <PageTransitionWrapper>
-                          {children}
-                      </PageTransitionWrapper>
+                    <PageTransitionWrapper>
+                      {children}
+                    </PageTransitionWrapper>
                   </main>
                   <BottomNav />
                 </div>
-              </TranslationProvider>
-            </NotificationProvider>
+                {/* Global floating chat button + full-screen modal */}
+                <ChatFab />
+                <ChatModal />
+              </ChatProvider>
+            </TranslationProvider>
+          </NotificationProvider>
         </FirebaseClientProvider>
       </body>
     </html>
