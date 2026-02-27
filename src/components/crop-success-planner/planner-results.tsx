@@ -25,6 +25,7 @@ import {
     RefreshCw,
 } from 'lucide-react';
 import SuitabilityGauge from './suitability-gauge';
+import SoilIntelligencePanel from './soil-intelligence-panel';
 import type { CropSuccessPlan } from '@/farming-partner/crop-success-planner-service';
 
 interface Props {
@@ -293,6 +294,18 @@ export default function PlannerResults({ plan, onReset }: Props) {
                     })}
                 </div>
             </ExpandableSection>
+
+            {/* ─── Soil Preparation Intelligence ─── */}
+            {plan.soilIntelligence && (
+                <ExpandableSection
+                    title="Soil Preparation Intelligence"
+                    icon={Sprout}
+                    badge="AI Soil Analysis"
+                    defaultOpen={false}
+                >
+                    <SoilIntelligencePanel data={plan.soilIntelligence} />
+                </ExpandableSection>
+            )}
 
             {/* ─── Preparation Steps ─── */}
             <ExpandableSection

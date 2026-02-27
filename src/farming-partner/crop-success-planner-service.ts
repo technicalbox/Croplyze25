@@ -1,44 +1,52 @@
 /**
  * @fileOverview Server-only AI orchestration for the Crop Success Planner.
  *
- * This module ONLY calls the AI flow. Firestore persistence is intentionally
- * omitted — it is handled client-side (where Firebase Auth context exists).
+ * Runs cropSuccessPlannerFlow + soilIntelligenceFlow in PARALLEL via Promise.all
+ * — zero added latency compared to running either flow alone.
  *
- * The Firestore client SDK enforces security rules that require a valid
- * authenticated session (request.auth). When called from a server-side
- * Next.js API route there is no auth session, resulting in PERMISSION_DENIED.
- * Moving writes to the client resolves this cleanly without needing Admin SDK.
+ * Firestore persistence is handled client-side (crop-success-planner-client.ts)
+ * to avoid PERMISSION_DENIED from unauthenticated server-side Firestore calls.
  */
 
 import { runCropSuccessPlanner } from '@/ai/flows/farming-partner/crop-success-planner-flow';
-import type {
-    CropSuccessPlannerInput,
-    CropSuccessPlannerOutput,
-} from '@/ai/flows/farming-partner/crop-success-planner-flow';
+import { runSoilIntelligence } from '@/ai/flows/farming-partner/soil-intelligence-flow';
+import type { CropSuccessPlannerInput, CropSuccessPlannerOutput } from '@/ai/flows/farming-partner/crop-success-planner-flow';
+import type { SoilIntelligenceOutput } from '@/ai/flows/farming-partner/soil-intelligence-flow';
 
-// ─── Shared type (used by both server and client) ─────────────────────────────
+// Re-export so client code only needs to import from this module
+export type { CropSuccessPlannerInput, CropSuccessPlannerOutput, SoilIntelligenceOutput };
 
-/** Full plan document — stored in Firestore by the client after AI generation. */
+// ─── Shared document type ─────────────────────────────────────────────────────
+
+/**
+ * Full plan document — stored in Firestore client-side after generation.
+ * soilIntelligence is optional for backward compatibility with plans
+ * generated before this feature was added.
+ */
 export interface CropSuccessPlan {
     id?: string;
     userId: string;
-    createdAt: number;             // Unix ms timestamp
+    createdAt: number;              // Unix ms timestamp
     status: 'completed' | 'error';
     input: CropSuccessPlannerInput;
     result: CropSuccessPlannerOutput;
+    soilIntelligence?: SoilIntelligenceOutput;
 }
 
-// ─── Server function — AI only ────────────────────────────────────────────────
+// ─── Server orchestrator ──────────────────────────────────────────────────────
 
 /**
- * Invokes the AI flow and returns the structured result.
- * Does NOT write to Firestore (call savePlanToFirestore() client-side instead).
+ * Runs the crop suitability planner AND soil intelligence analyser in parallel.
+ * Returns a combined CropSuccessPlan with both results.
  */
 export async function generateCropSuccessPlan(
     input: CropSuccessPlannerInput,
     userId: string
 ): Promise<CropSuccessPlan> {
-    const result = await runCropSuccessPlanner(input);
+    const [result, soilIntelligence] = await Promise.all([
+        runCropSuccessPlanner(input),
+        runSoilIntelligence(input),
+    ]);
 
     return {
         userId,
@@ -46,5 +54,6 @@ export async function generateCropSuccessPlan(
         status: 'completed',
         input,
         result,
+        soilIntelligence,
     };
 }

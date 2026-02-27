@@ -9,7 +9,7 @@ import { haptics } from '@/lib/haptics';
 const navItems = [
   { href: '/dashboard', label: 'Home', icon: LayoutDashboard, center: false },
   { href: '/scan', label: 'Scan', icon: ScanLine, center: false },
-  { href: '/farming-partner/crop-success-planner', label: 'Farm AI', icon: Wheat, center: true },
+  { href: '/farming-partner', label: 'Farm AI', icon: Wheat, center: true },
   { href: '/alerts', label: 'Alerts', icon: Bell, center: false },
   { href: '/profile', label: 'Profile', icon: User, center: false },
 ];
@@ -32,7 +32,9 @@ export default function BottomNav() {
           const isActive =
             pathname === item.href ||
             (item.href === '/scan' && pathname.startsWith('/scan')) ||
-            (item.href.startsWith('/farming-partner') && pathname.startsWith('/farming-partner'));
+            (item.href === '/farming-partner' && (
+              pathname.startsWith('/farming-partner') || pathname.startsWith('/growth-timeline')
+            ));
 
           if (item.center) {
             return (

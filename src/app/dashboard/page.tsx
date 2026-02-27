@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Download, History, Loader2, User, Bell, Wheat, ChevronRight, Sprout, BarChart3 } from "lucide-react";
+import { Download, History, Loader2, User, Bell, Wheat, ChevronRight, CalendarDays } from "lucide-react";
 import AlertBanner from "@/components/dashboard/alert-banner";
 import HistoryTable from "@/components/dashboard/history-table";
 import DiseaseChart from "@/components/dashboard/disease-chart";
@@ -79,7 +79,7 @@ export default function DashboardPage() {
             head: [tableColumns],
             body: tableRows,
             startY: 30,
-            headStyles: { fillColor: [4, 120, 87] }, // primary-main color
+            headStyles: { fillColor: [4, 120, 87] },
             theme: 'striped',
         });
 
@@ -118,35 +118,48 @@ export default function DashboardPage() {
                     <AlertBanner />
                 </div>
 
-                {/* ── Farming Partner Engine Banner ── */}
-                <Link href="/farming-partner/crop-success-planner" className="block animate-in fade-in-0 slide-in-from-bottom-2 duration-500">
-                    <div className="w-full rounded-2xl overflow-hidden relative bg-gradient-to-br from-primary to-emerald-700 text-white shadow-lg shadow-primary/20 active:scale-[0.98] transition-transform">
-                        <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(circle at 80% 50%, white 0%, transparent 60%)' }} />
-                        <div className="relative flex items-center gap-4 p-5">
-                            <div className="flex items-center justify-center w-12 h-12 rounded-2xl bg-white/20 shrink-0">
-                                <Wheat className="h-7 w-7 text-white" />
-                            </div>
-                            <div className="flex-1 min-w-0">
-                                <p className="text-xs font-semibold text-white/70 uppercase tracking-wider mb-0.5">New Feature</p>
-                                <h2 className="text-base font-bold leading-tight">Crop Success Planner</h2>
-                                <p className="text-xs text-white/80 mt-0.5">AI suitability score, risks &amp; prep steps</p>
-                            </div>
-                            <ChevronRight className="h-5 w-5 text-white/60 shrink-0" />
-                        </div>
-                        <div className="flex border-t border-white/10">
-                            {[
-                                { icon: Sprout, label: 'Suitability Score' },
-                                { icon: BarChart3, label: 'Risk Analysis' },
-                                { icon: Wheat, label: 'Prep Plan' },
-                            ].map(({ icon: Icon, label }) => (
-                                <div key={label} className="flex-1 flex items-center justify-center gap-1.5 py-2.5 text-white/70">
-                                    <Icon className="h-3.5 w-3.5" />
-                                    <span className="text-[10px] font-medium">{label}</span>
+                {/* ── Farm AI Tool Cards ── */}
+                <div className="grid grid-cols-2 gap-3 animate-in fade-in-0 slide-in-from-bottom-2 duration-500">
+                    {/* Crop Success Planner */}
+                    <Link href="/farming-partner/crop-success-planner" className="block active:scale-[0.97] transition-transform duration-150">
+                        <div className="h-full rounded-2xl overflow-hidden relative bg-gradient-to-br from-primary to-emerald-700 text-white shadow-md shadow-primary/20">
+                            <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(circle at 80% 20%, white 0%, transparent 60%)' }} />
+                            <div className="relative flex flex-col gap-3 p-4">
+                                <div className="flex items-center justify-between">
+                                    <div className="flex items-center justify-center w-9 h-9 rounded-xl bg-white/20">
+                                        <Wheat className="h-5 w-5 text-white" />
+                                    </div>
+                                    <ChevronRight className="h-4 w-4 text-white/40" />
                                 </div>
-                            ))}
+                                <div>
+                                    <p className="text-[10px] font-semibold text-white/60 uppercase tracking-wider">Planner</p>
+                                    <h2 className="text-sm font-bold leading-tight mt-0.5">Crop Success</h2>
+                                    <p className="text-[11px] text-white/70 mt-1 leading-snug">AI score, risks &amp; soil prep</p>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </Link>
+                    </Link>
+
+                    {/* Growth Timeline */}
+                    <Link href="/growth-timeline" className="block active:scale-[0.97] transition-transform duration-150">
+                        <div className="h-full rounded-2xl overflow-hidden relative bg-gradient-to-br from-teal-600 to-cyan-700 text-white shadow-md shadow-teal-500/20">
+                            <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(circle at 80% 20%, white 0%, transparent 60%)' }} />
+                            <div className="relative flex flex-col gap-3 p-4">
+                                <div className="flex items-center justify-between">
+                                    <div className="flex items-center justify-center w-9 h-9 rounded-xl bg-white/20">
+                                        <CalendarDays className="h-5 w-5 text-white" />
+                                    </div>
+                                    <span className="text-[9px] font-bold bg-white/20 px-1.5 py-0.5 rounded-full">NEW</span>
+                                </div>
+                                <div>
+                                    <p className="text-[10px] font-semibold text-white/60 uppercase tracking-wider">Timeline</p>
+                                    <h2 className="text-sm font-bold leading-tight mt-0.5">Growth Plan</h2>
+                                    <p className="text-[11px] text-white/70 mt-1 leading-snug">Week-by-week crop guide</p>
+                                </div>
+                            </div>
+                        </div>
+                    </Link>
+                </div>
 
                 <div className="flex flex-col gap-4">
                     <Card className="w-full max-w-full rounded-2xl p-4 overflow-hidden break-words">
