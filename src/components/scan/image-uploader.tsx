@@ -10,7 +10,7 @@ import {
 } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { UploadCloud, Leaf, Loader2, Camera, AlertTriangle } from 'lucide-react';
+import { UploadCloud, Leaf, Loader2, Camera, AlertTriangle, FlipHorizontal2 } from 'lucide-react';
 import Image from 'next/image';
 import { Button } from '../ui/button';
 import { useRouter } from 'next/navigation';
@@ -45,6 +45,8 @@ export default function ImageUploader() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [hasCameraPermission, setHasCameraPermission] = useState<boolean | null>(null);
   const [stream, setStream] = useState<MediaStream | null>(null);
+  // 'environment' = back camera (default), 'user' = front camera
+  const [facingMode, setFacingMode] = useState<'environment' | 'user'>('environment');
 
   useEffect(() => {
     // Cleanup stream on component unmount
@@ -66,11 +68,19 @@ export default function ImageUploader() {
     }
   };
 
-  const enableCamera = async () => {
+  const enableCamera = async (facing: 'environment' | 'user' = facingMode) => {
     haptics.light();
+    // Stop any existing stream before starting a new one
+    if (stream) {
+      stream.getTracks().forEach(track => track.stop());
+      setStream(null);
+    }
     try {
-      const mediaStream = await navigator.mediaDevices.getUserMedia({ video: true });
+      const mediaStream = await navigator.mediaDevices.getUserMedia({
+        video: { facingMode: { ideal: facing } },
+      });
       setStream(mediaStream);
+      setFacingMode(facing);
       if (videoRef.current) {
         videoRef.current.srcObject = mediaStream;
       }
@@ -85,6 +95,12 @@ export default function ImageUploader() {
         message: 'Please enable camera permissions in your browser settings to use this feature.',
       });
     }
+  };
+
+  const flipCamera = () => {
+    haptics.light();
+    const next = facingMode === 'environment' ? 'user' : 'environment';
+    enableCamera(next);
   };
 
   const handleCapture = () => {
@@ -158,86 +174,98 @@ export default function ImageUploader() {
         <form onSubmit={handleSubmit} className="space-y-6 flex-1 flex flex-col">
           <div className="flex-1">
             <Tabs defaultValue="upload" className="w-full">
-                <TabsList className="grid w-full grid-cols-2">
+              <TabsList className="grid w-full grid-cols-2">
                 <TabsTrigger value="upload" onClick={() => haptics.light()}>
-                    <UploadCloud className="mr-2 h-4 w-4" /> Upload File
+                  <UploadCloud className="mr-2 h-4 w-4" /> Upload File
                 </TabsTrigger>
-                <TabsTrigger value="camera" onClick={enableCamera}>
-                    <Camera className="mr-2 h-4 w-4" /> Use Camera
+                <TabsTrigger value="camera" onClick={() => enableCamera()}>
+                  <Camera className="mr-2 h-4 w-4" /> Use Camera
                 </TabsTrigger>
-                </TabsList>
-                <TabsContent value="upload" className="mt-4">
+              </TabsList>
+              <TabsContent value="upload" className="mt-4">
                 <div className="space-y-2">
-                    <Label htmlFor="picture" className="sr-only">Crop Image</Label>
-                    <div className="relative flex h-64 w-full items-center justify-center rounded-lg border-2 border-dashed border-muted bg-muted/20 p-4 transition-colors hover:border-primary/50">
+                  <Label htmlFor="picture" className="sr-only">Crop Image</Label>
+                  <div className="relative flex h-64 w-full items-center justify-center rounded-lg border-2 border-dashed border-muted bg-muted/20 p-4 transition-colors hover:border-primary/50">
                     {preview ? (
-                        <Image
+                      <Image
                         src={preview}
                         alt="Image preview"
                         fill
                         style={{ objectFit: 'contain' }}
                         className="rounded-md"
-                        />
+                      />
                     ) : (
-                        <div className="flex flex-col items-center justify-center text-center text-muted-foreground">
+                      <div className="flex flex-col items-center justify-center text-center text-muted-foreground">
                         <UploadCloud className="mb-2 h-12 w-12" />
                         <p className="font-semibold">
-                            Tap to upload
+                          Tap to upload
                         </p>
                         <p className="text-xs">PNG, JPG, or WEBP</p>
-                        </div>
+                      </div>
                     )}
                     <Input
-                        id="picture"
-                        type="file"
-                        className="absolute inset-0 h-full w-full cursor-pointer opacity-0"
-                        onChange={handleFileChange}
-                        accept="image/png, image/jpeg, image/webp"
+                      id="picture"
+                      type="file"
+                      className="absolute inset-0 h-full w-full cursor-pointer opacity-0"
+                      onChange={handleFileChange}
+                      accept="image/png, image/jpeg, image/webp"
                     />
-                    </div>
+                  </div>
                 </div>
-                </TabsContent>
-                <TabsContent value="camera" className="mt-4">
+              </TabsContent>
+              <TabsContent value="camera" className="mt-4">
                 <div className="space-y-4">
-                    <div className="relative flex h-64 w-full items-center justify-center overflow-hidden rounded-lg border bg-black">
+                  <div className="relative flex h-64 w-full items-center justify-center overflow-hidden rounded-lg border bg-black">
                     {hasCameraPermission === false && (
-                        <Alert variant="destructive" className="w-auto">
+                      <Alert variant="destructive" className="w-auto">
                         <AlertTriangle className="h-4 w-4" />
                         <AlertTitle>Camera Access Denied</AlertTitle>
                         <AlertDescription>
-                            Enable camera permissions.
+                          Enable camera permissions.
                         </AlertDescription>
-                        </Alert>
+                      </Alert>
                     )}
                     {preview ? (
-                        <Image
+                      <Image
                         src={preview}
                         alt="Captured image"
                         fill
                         style={{ objectFit: 'contain' }}
                         className="rounded-md"
-                        />
+                      />
                     ) : (
-                        <video
+                      <video
                         ref={videoRef}
                         autoPlay
                         muted
                         playsInline
                         className="h-full w-full object-cover"
-                        />
+                      />
                     )}
-                    </div>
-                    <Button
+                    {/* Flip camera button — shown while stream is live */}
+                    {hasCameraPermission && !preview && (
+                      <button
+                        type="button"
+                        onClick={flipCamera}
+                        className="absolute top-2 right-2 flex items-center gap-1 bg-black/50 hover:bg-black/70 text-white text-xs font-semibold px-2.5 py-1.5 rounded-full backdrop-blur-sm transition-colors active:scale-95"
+                        title={facingMode === 'environment' ? 'Switch to front camera' : 'Switch to back camera'}
+                      >
+                        <FlipHorizontal2 className="h-4 w-4" />
+                        {facingMode === 'environment' ? 'Front' : 'Back'}
+                      </button>
+                    )}
+                  </div>
+                  <Button
                     type="button"
                     className="w-full h-12 text-base"
                     onClick={handleCapture}
                     disabled={!hasCameraPermission || isLoading || !!preview}
-                    >
+                  >
                     <Camera className="mr-2 h-4 w-4" /> Capture Image
-                    </Button>
-                    <canvas ref={canvasRef} className="hidden" />
+                  </Button>
+                  <canvas ref={canvasRef} className="hidden" />
                 </div>
-                </TabsContent>
+              </TabsContent>
             </Tabs>
           </div>
 
@@ -248,24 +276,24 @@ export default function ImageUploader() {
                 <SelectValue placeholder="Select a crop type" />
               </SelectTrigger>
               <SelectContent>
-                 <SelectGroup>
-                    <SelectLabel>Common Crops</SelectLabel>
-                    <SelectItem value="tomato">Tomato</SelectItem>
-                    <SelectItem value="potato">Potato</SelectItem>
-                    <SelectItem value="corn">Corn (Maize)</SelectItem>
-                    <SelectItem value="wheat">Wheat</SelectItem>
-                    <SelectItem value="rice">Rice</SelectItem>
-                    <SelectItem value="soybean">Soybean</SelectItem>
-                    <SelectItem value="apple">Apple</SelectItem>
-                    <SelectItem value="grape">Grape</SelectItem>
-                    <SelectItem value="strawberry">Strawberry</SelectItem>
-                    <SelectItem value="bell-pepper">Bell Pepper</SelectItem>
-                    <SelectItem value="cucumber">Cucumber</SelectItem>
-                    <SelectItem value="lettuce">Lettuce</SelectItem>
-                 </SelectGroup>
-                 <SelectGroup>
-                    <SelectLabel>Other</SelectLabel>
-                    <SelectItem value="other">Other</SelectItem>
+                <SelectGroup>
+                  <SelectLabel>Common Crops</SelectLabel>
+                  <SelectItem value="tomato">Tomato</SelectItem>
+                  <SelectItem value="potato">Potato</SelectItem>
+                  <SelectItem value="corn">Corn (Maize)</SelectItem>
+                  <SelectItem value="wheat">Wheat</SelectItem>
+                  <SelectItem value="rice">Rice</SelectItem>
+                  <SelectItem value="soybean">Soybean</SelectItem>
+                  <SelectItem value="apple">Apple</SelectItem>
+                  <SelectItem value="grape">Grape</SelectItem>
+                  <SelectItem value="strawberry">Strawberry</SelectItem>
+                  <SelectItem value="bell-pepper">Bell Pepper</SelectItem>
+                  <SelectItem value="cucumber">Cucumber</SelectItem>
+                  <SelectItem value="lettuce">Lettuce</SelectItem>
+                </SelectGroup>
+                <SelectGroup>
+                  <SelectLabel>Other</SelectLabel>
+                  <SelectItem value="other">Other</SelectItem>
                 </SelectGroup>
               </SelectContent>
             </Select>
