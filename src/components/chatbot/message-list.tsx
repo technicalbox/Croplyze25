@@ -72,35 +72,74 @@ function ThinkingOrb() {
 
 // ─── AI bubble ────────────────────────────────────────────────────────────────
 
+/** Strip any stray HTML tags the AI might have included despite instructions */
+function stripHtml(raw: string): string {
+    // Replace block-level tags with newlines to preserve structure
+    return raw
+        .replace(/<br\s*\/?>/gi, '\n')
+        .replace(/<\/li>/gi, '\n')
+        .replace(/<\/p>/gi, '\n')
+        .replace(/<li>/gi, '- ')
+        .replace(/<ul>|<\/ul>|<ol>|<\/ol>/gi, '\n')
+        .replace(/<\/?(strong|b)>/gi, '**')
+        .replace(/<[^>]+>/g, '')  // nuke every remaining tag
+        .replace(/\n{3,}/g, '\n\n') // collapse triple+ newlines
+        .trim();
+}
+
+/** Render inline text: **bold** → <strong> */
+function InlineText({ text }: { text: string }) {
+    const parts = text.split(/\*\*(.*?)\*\*/g);
+    return (
+        <>
+            {parts.map((chunk, i) =>
+                i % 2 === 1
+                    ? <strong key={i} className="font-semibold text-gray-900 dark:text-white">{chunk}</strong>
+                    : <span key={i}>{chunk}</span>
+            )}
+        </>
+    );
+}
+
 function AiBubble({ content }: { content: string }) {
-    // Very light markdown rendering: **bold** and - bullet lists
-    const lines = content.split('\n').filter(Boolean);
+    const clean = stripHtml(content);
+    const lines = clean.split('\n').filter(l => l.trim() !== '');
+
+    // Count bullet lines to number them
+    let bulletCount = 0;
+
     return (
         <div className="flex flex-col items-start gap-1 max-w-[90%]">
-            <span className="text-[11px] font-medium text-green-700 dark:text-green-300 ml-1">Fasal AI</span>
-            <div className="relative bg-white/70 dark:bg-white/5 border border-white/40 dark:border-white/10 backdrop-blur-xl rounded-2xl rounded-tl-sm shadow-md overflow-hidden">
+            <span className="text-[11px] font-medium text-green-700 dark:text-green-400 ml-1">Fasal AI</span>
+            <div className="relative bg-white/80 dark:bg-white/5 border border-white/50 dark:border-white/10 backdrop-blur-xl rounded-2xl rounded-tl-sm shadow-md overflow-hidden">
                 {/* Left green accent bar */}
                 <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-green-400 to-emerald-600 rounded-l-sm" />
-                <div className="px-4 py-3 pl-5 space-y-1">
+                <div className="px-4 py-3 pl-5 space-y-2">
                     {lines.map((line, i) => {
-                        if (line.startsWith('- ') || line.startsWith('• ')) {
-                            const num = lines.slice(0, i).filter(l => l.startsWith('- ') || l.startsWith('• ')).length + 1;
+                        const trimmed = line.trim();
+                        const isBullet = trimmed.startsWith('- ') || trimmed.startsWith('• ');
+
+                        if (isBullet) {
+                            bulletCount++;
+                            const num = bulletCount;
+                            const text = trimmed.replace(/^[-•]\s+/, '');
                             return (
                                 <div key={i} className="flex items-start gap-2.5">
-                                    <span className="flex-none w-4 h-4 rounded-full bg-green-500/20 text-green-700 dark:text-green-300 flex items-center justify-center text-[9px] font-bold border border-green-500/30 mt-0.5">
+                                    <span className="flex-none w-5 h-5 rounded-full bg-green-500/20 text-green-700 dark:text-green-300 flex items-center justify-center text-[10px] font-bold border border-green-500/30 mt-0.5 shrink-0">
                                         {num}
                                     </span>
-                                    <span className="text-sm text-gray-700 dark:text-gray-200 leading-relaxed">
-                                        {line.replace(/^[-•]\s/, '')}
-                                    </span>
+                                    <p className="text-sm text-gray-700 dark:text-gray-200 leading-relaxed">
+                                        <InlineText text={text} />
+                                    </p>
                                 </div>
                             );
                         }
-                        // Bold **text**
-                        const parts = line.split(/\*\*(.*?)\*\*/g);
+
+                        // Non-bullet lines reset bullet counter only if separated by empty lines
+                        // (preserve sequential numbering within a block)
                         return (
                             <p key={i} className="text-sm text-gray-800 dark:text-gray-100 leading-relaxed">
-                                {parts.map((p, j) => j % 2 === 1 ? <strong key={j}>{p}</strong> : p)}
+                                <InlineText text={trimmed} />
                             </p>
                         );
                     })}

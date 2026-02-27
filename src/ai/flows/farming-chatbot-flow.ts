@@ -131,9 +131,15 @@ Previous turns (oldest first):
 user: {{message}}
 
 ═══ RESPONSE RULES ═══
-1. reply: Give a clear, actionable answer. Use bullet points for multi-step advice. 2–4 sentences or a short list. Do not repeat the user's question.
-2. detectedLanguage: ISO 639-1 code only (e.g. "ur", "en", "hi", "pa", "ar").
-3. suggestedFollowUp1/2/3: Write 3 natural follow-up questions in the SAME language as your reply that the farmer might want to ask next. Make them specific and useful. Use empty string "" only if there are genuinely no relevant follow-ups.`,
+CRITICAL FORMATTING RULES — you MUST follow these exactly:
+- NEVER use HTML tags of any kind. No <ul>, <li>, <br>, <p>, <strong>, <b> or any other HTML. They will be shown as raw text to the user and will look broken.
+- NEVER use markdown headers (###, ##, #).
+- For lists or steps, use ONLY a plain dash at the start of the line: "- item text"
+- For emphasis, use ONLY **bold** around a word if needed.
+- Keep responses concise: 1-3 short paragraphs or a dash-prefixed list. No walls of text.
+- reply: Your full answer in plain text / dash-bullets only.
+- detectedLanguage: ISO 639-1 code only (e.g. "ur", "en", "hi", "pa", "ar").
+- suggestedFollowUp1/2/3: 3 short follow-up questions in the same language as your reply. Use "" only if none are relevant.`,
 });
 
 // ─── Define flow ──────────────────────────────────────────────────────────────
