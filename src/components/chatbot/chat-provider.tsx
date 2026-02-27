@@ -32,6 +32,8 @@ export interface UiMessage {
 export interface ChatContextValue {
     isOpen: boolean;
     openChat: () => void;
+    /** Opens the chat modal AND sends a prefilled message after animation settles. */
+    openChatWithMessage: (message: string) => void;
     closeChat: () => void;
     messages: UiMessage[];
     isLoading: boolean;
@@ -204,9 +206,15 @@ export function ChatProvider({ children }: { children: ReactNode }) {
         }
     }, [isLoading, user, sessionId, cropContext]);
 
+    /** Opens the chat modal and auto-sends a prefilled message after the animation settles. */
+    const openChatWithMessage = useCallback((message: string) => {
+        setIsOpen(true);
+        setTimeout(() => { sendMessage(message); }, 350);
+    }, [sendMessage]);
+
     return (
         <ChatCtx.Provider value={{
-            isOpen, openChat, closeChat,
+            isOpen, openChat, openChatWithMessage, closeChat,
             messages, isLoading,
             sessionId, sessionTitle,
             suggestedFollowUps, detectedLanguage,

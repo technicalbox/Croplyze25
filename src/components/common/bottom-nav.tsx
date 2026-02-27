@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { LayoutDashboard, ScanLine, Bell, User, Wheat } from 'lucide-react';
+import { LayoutDashboard, ScanLine, Bell, User, Wheat, BarChart2 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { haptics } from '@/lib/haptics';
 
@@ -10,9 +10,10 @@ const navItems = [
   { href: '/dashboard', label: 'Home', icon: LayoutDashboard, center: false },
   { href: '/scan', label: 'Scan', icon: ScanLine, center: false },
   { href: '/farming-partner', label: 'Farm AI', icon: Wheat, center: true },
-  { href: '/alerts', label: 'Alerts', icon: Bell, center: false },
-  { href: '/profile', label: 'Profile', icon: User, center: false },
+  { href: '/insights', label: 'Farm', icon: BarChart2, center: false },
+  { href: '/profile', label: 'Me', icon: User, center: false },
 ];
+
 
 export default function BottomNav() {
   const pathname = usePathname();
