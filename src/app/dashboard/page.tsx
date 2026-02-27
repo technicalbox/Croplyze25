@@ -7,6 +7,7 @@ import AlertBanner from "@/components/dashboard/alert-banner";
 import HistoryTable from "@/components/dashboard/history-table";
 import DiseaseChart from "@/components/dashboard/disease-chart";
 import AiInsightsPanel from "@/components/dashboard/ai-insights-panel";
+import RiskEnginePanel from "@/components/dashboard/risk-engine-panel";
 import { useUser, useCollection } from "@/firebase";
 import { Diagnosis } from "@/lib/types";
 import { useRouter } from 'next/navigation';
@@ -184,6 +185,9 @@ export default function DashboardPage() {
 
                 {/* ── AI Insights Widgets ── */}
                 <AiInsightsPanel diagnoses={pastDiagnoses ?? []} />
+
+                {/* ── AI Risk Engine ── */}
+                <RiskEnginePanel diagnoses={pastDiagnoses ?? []} />
 
                 <div className="flex flex-col gap-4">
                     <Card className="w-full max-w-full rounded-2xl p-4 overflow-hidden break-words">
