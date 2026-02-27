@@ -6,6 +6,7 @@ import { Download, History, Loader2, User, Bell, Wheat, ChevronRight, CalendarDa
 import AlertBanner from "@/components/dashboard/alert-banner";
 import HistoryTable from "@/components/dashboard/history-table";
 import DiseaseChart from "@/components/dashboard/disease-chart";
+import AiInsightsPanel from "@/components/dashboard/ai-insights-panel";
 import { useUser, useCollection } from "@/firebase";
 import { Diagnosis } from "@/lib/types";
 import { useRouter } from 'next/navigation';
@@ -180,6 +181,9 @@ export default function DashboardPage() {
                         </div>
                     </div>
                 </Link>
+
+                {/* ── AI Insights Widgets ── */}
+                <AiInsightsPanel diagnoses={pastDiagnoses ?? []} />
 
                 <div className="flex flex-col gap-4">
                     <Card className="w-full max-w-full rounded-2xl p-4 overflow-hidden break-words">
