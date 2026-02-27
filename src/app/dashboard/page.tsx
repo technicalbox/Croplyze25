@@ -61,24 +61,24 @@ export default function DashboardPage() {
             <main className="flex flex-1 flex-col gap-4 p-4">
 
                 {/* ── Greeting ── */}
-                <div className="animate-in fade-in-0 duration-300">
-                    <p className="text-2xl font-bold text-foreground">{getGreeting()}, {firstName} 🌱</p>
-                    <p className="text-sm text-muted-foreground mt-0.5">{todayStr}</p>
+                <div className="animate-slide-up-fade">
+                    <p className="text-3xl font-bold tracking-tight text-foreground">{getGreeting()}, {firstName} 🌱</p>
+                    <p className="text-sm text-muted-foreground mt-1">{todayStr}</p>
                 </div>
 
                 {/* ── Alert Banner ── */}
-                <div className="animate-in fade-in-0 duration-500">
+                <div className="animate-slide-up-fade delay-75">
                     <AlertBanner />
                 </div>
 
                 {/* ── Quick Actions ── */}
-                <div className="animate-in fade-in-0 slide-in-from-bottom-2 duration-500">
-                    <p className="text-[11px] font-bold text-muted-foreground uppercase tracking-wider mb-2">Quick Actions</p>
+                <div className="animate-slide-up-fade delay-150">
+                    <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest mb-2">Quick Actions</p>
                     <QuickActions />
                 </div>
 
                 {/* ── Farm AI Tool Cards ── */}
-                <div className="grid grid-cols-2 gap-3 animate-in fade-in-0 slide-in-from-bottom-2 duration-500">
+                <div className="grid grid-cols-2 gap-3 animate-slide-up-fade delay-225">
                     {/* Crop Success Planner */}
                     <Link href="/farming-partner/crop-success-planner" className="block active:scale-[0.97] transition-transform duration-150">
                         <div className="h-full rounded-2xl overflow-hidden relative bg-gradient-to-br from-primary to-emerald-700 text-white shadow-md shadow-primary/20">
@@ -121,7 +121,7 @@ export default function DashboardPage() {
                 </div>
 
                 {/* Harvest Optimizer — full width */}
-                <Link href="/harvest-optimizer" className="block active:scale-[0.98] transition-transform duration-150 animate-in fade-in-0 slide-in-from-bottom-2 duration-500">
+                <Link href="/harvest-optimizer" className="block active:scale-[0.98] transition-transform duration-150 animate-slide-up-fade delay-300">
                     <div className="w-full rounded-2xl overflow-hidden relative bg-gradient-to-br from-amber-600 to-orange-700 text-white shadow-md shadow-amber-500/20">
                         <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(circle at 85% 30%, white 0%, transparent 65%)' }} />
                         <div className="relative flex items-center gap-4 p-4">
@@ -141,8 +141,8 @@ export default function DashboardPage() {
                 </Link>
 
                 {/* ── Latest Scan Card ── */}
-                <div className="animate-in fade-in-0 slide-in-from-bottom-2 duration-500">
-                    <p className="text-[11px] font-bold text-muted-foreground uppercase tracking-wider mb-2">Latest Scan</p>
+                <div className="animate-slide-up-fade delay-375">
+                    <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest mb-2">Latest Scan</p>
                     <LatestScanCard diagnoses={diagnosesLoading ? undefined : (pastDiagnoses ?? [])} />
                 </div>
 

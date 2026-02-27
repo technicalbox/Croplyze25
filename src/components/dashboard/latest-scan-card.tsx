@@ -28,7 +28,7 @@ export default function LatestScanCard({ diagnoses }: LatestScanCardProps) {
     // ── Empty state ──────────────────────────────────────────────────────────
     if (!diagnoses || diagnoses.length === 0) {
         return (
-            <Link href="/scan" className="block active:scale-[0.98] transition-transform duration-150">
+            <Link href="/scan" className="block active:scale-[0.98] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md card-hover">
                 <div className="rounded-2xl border border-dashed border-border bg-card p-5 flex items-center gap-4">
                     <div className="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center flex-none">
                         <ScanLine className="h-5 w-5 text-primary" />
@@ -61,12 +61,12 @@ export default function LatestScanCard({ diagnoses }: LatestScanCardProps) {
     return (
         <Link
             href={`/scan/${latest.id}`}
-            className="block active:scale-[0.98] transition-transform duration-150"
+            className="block active:scale-[0.98] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md"
         >
             <div className="rounded-2xl border border-border bg-card shadow-sm overflow-hidden">
                 {/* Top accent bar */}
                 <div
-                    className="h-1 w-full"
+                    className="h-1.5 w-full"
                     style={{ background: isHealthy ? '#22c55e' : sevConfig.color }}
                 />
                 <div className="p-4 flex items-center gap-3">
