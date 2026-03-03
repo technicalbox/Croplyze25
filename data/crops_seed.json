@@ -1,0 +1,1124 @@
+[
+    {
+        "id": "rice",
+        "commonNames": {
+            "en": "Rice",
+            "hi": "चावल",
+            "te": "వరి"
+        },
+        "scientificName": "Oryza sativa",
+        "aliases": [
+            "paddy",
+            "chaval",
+            "dhan"
+        ],
+        "seasons": [
+            "kharif"
+        ],
+        "soil": {
+            "best": [
+                "loamy",
+                "alluvial",
+                "clayey"
+            ],
+            "bad": [
+                "saline",
+                "sandy"
+            ]
+        },
+        "timeToHarvestDays": 120,
+        "marketDemand": {
+            "peakMonths": [
+                10,
+                11,
+                12
+            ],
+            "seasonal": true,
+            "notes": "High demand post-monsoon due to festivals and winter consumption."
+        },
+        "growthConditions": {
+            "tempC": {
+                "min": 20,
+                "max": 35
+            },
+            "waterRequirement": "High",
+            "sunlight": "Full sun"
+        },
+        "riskAndPrevention": {
+            "diseases": [
+                {
+                    "name": "Leaf blast",
+                    "prevention": "Use resistant varieties and balanced nitrogen fertilization.",
+                    "treatment": "Apply tricyclazole or isoprothiolane at early symptoms."
+                },
+                {
+                    "name": "Sheath blight",
+                    "prevention": "Maintain proper spacing and avoid excess nitrogen.",
+                    "treatment": "Spray validamycin or hexaconazole."
+                },
+                {
+                    "name": "Brown plant hopper",
+                    "prevention": "Avoid continuous flooding and excess nitrogen.",
+                    "treatment": "Apply imidacloprid or buprofezin."
+                }
+            ]
+        },
+        "regionalNotes": {
+            "IN": {
+                "AP": {
+                    "notes": "Ideal in coastal Andhra, Krishna-Godavari delta."
+                },
+                "WB": {
+                    "notes": "Major crop in Bengal. Aman (kharif) and Boro (summer) seasons."
+                }
+            }
+        },
+        "tags": [
+            "grain",
+            "staple",
+            "cereal"
+        ],
+        "lastUpdated": "2026-02-27T12:00:00Z",
+        "source": "seed"
+    },
+    {
+        "id": "wheat",
+        "commonNames": {
+            "en": "Wheat",
+            "hi": "गेहूँ",
+            "te": "గోధుమ"
+        },
+        "scientificName": "Triticum aestivum",
+        "aliases": [
+            "gehun",
+            "atta"
+        ],
+        "seasons": [
+            "rabi"
+        ],
+        "soil": {
+            "best": [
+                "loamy",
+                "clay-loam"
+            ],
+            "bad": [
+                "waterlogged",
+                "acidic"
+            ]
+        },
+        "timeToHarvestDays": 130,
+        "marketDemand": {
+            "peakMonths": [
+                3,
+                4,
+                5
+            ],
+            "seasonal": true,
+            "notes": "Harvested Mar-Apr, steady demand year-round for flour."
+        },
+        "growthConditions": {
+            "tempC": {
+                "min": 10,
+                "max": 25
+            },
+            "waterRequirement": "Medium",
+            "sunlight": "Full sun"
+        },
+        "riskAndPrevention": {
+            "diseases": [
+                {
+                    "name": "Rust (yellow/brown)",
+                    "prevention": "Use rust-resistant varieties; timely sowing.",
+                    "treatment": "Spray propiconazole at 0.1%."
+                },
+                {
+                    "name": "Loose smut",
+                    "prevention": "Seed treatment with carboxin or thiram.",
+                    "treatment": "Use certified disease-free seeds."
+                }
+            ]
+        },
+        "regionalNotes": {
+            "IN": {
+                "PB": {
+                    "notes": "Punjab is India's wheat bowl; November sowing ideal."
+                },
+                "UP": {
+                    "notes": "Largest wheat-producing state. Indo-Gangetic plains best."
+                }
+            }
+        },
+        "tags": [
+            "grain",
+            "staple",
+            "cereal",
+            "rabi"
+        ],
+        "lastUpdated": "2026-02-27T12:00:00Z",
+        "source": "seed"
+    },
+    {
+        "id": "maize",
+        "commonNames": {
+            "en": "Maize",
+            "hi": "मक्का",
+            "te": "మొక్కజొన్న"
+        },
+        "scientificName": "Zea mays",
+        "aliases": [
+            "corn",
+            "makka",
+            "bhutta"
+        ],
+        "seasons": [
+            "kharif",
+            "rabi"
+        ],
+        "soil": {
+            "best": [
+                "loamy",
+                "sandy-loam"
+            ],
+            "bad": [
+                "heavy clay",
+                "waterlogged"
+            ]
+        },
+        "timeToHarvestDays": 100,
+        "marketDemand": {
+            "peakMonths": [
+                9,
+                10,
+                11
+            ],
+            "seasonal": true,
+            "notes": "Used for feed, starch, and poultry industry year-round."
+        },
+        "growthConditions": {
+            "tempC": {
+                "min": 18,
+                "max": 32
+            },
+            "waterRequirement": "Medium",
+            "sunlight": "Full sun"
+        },
+        "riskAndPrevention": {
+            "diseases": [
+                {
+                    "name": "Fall armyworm",
+                    "prevention": "Early sowing and intercropping with legumes.",
+                    "treatment": "Apply emamectin benzoate or spinetoram."
+                },
+                {
+                    "name": "Turcicum leaf blight",
+                    "prevention": "Use resistant hybrids.",
+                    "treatment": "Spray mancozeb at 0.25%."
+                }
+            ]
+        },
+        "regionalNotes": {
+            "IN": {
+                "KA": {
+                    "notes": "Karnataka is a major maize state; rabi season in irrigated areas."
+                }
+            }
+        },
+        "tags": [
+            "grain",
+            "cereal",
+            "feed"
+        ],
+        "lastUpdated": "2026-02-27T12:00:00Z",
+        "source": "seed"
+    },
+    {
+        "id": "tomato",
+        "commonNames": {
+            "en": "Tomato",
+            "hi": "टमाटर",
+            "te": "టమాటో"
+        },
+        "scientificName": "Solanum lycopersicum",
+        "aliases": [
+            "tamatar"
+        ],
+        "seasons": [
+            "rabi",
+            "kharif"
+        ],
+        "soil": {
+            "best": [
+                "sandy-loam",
+                "loamy"
+            ],
+            "bad": [
+                "heavy clay",
+                "saline"
+            ]
+        },
+        "timeToHarvestDays": 75,
+        "marketDemand": {
+            "peakMonths": [
+                1,
+                2,
+                3,
+                11,
+                12
+            ],
+            "seasonal": true,
+            "notes": "Prices highly volatile. Peak prices in summer when supply drops."
+        },
+        "growthConditions": {
+            "tempC": {
+                "min": 15,
+                "max": 30
+            },
+            "waterRequirement": "Medium",
+            "sunlight": "Full sun"
+        },
+        "riskAndPrevention": {
+            "diseases": [
+                {
+                    "name": "Early blight",
+                    "prevention": "Crop rotation and mulching.",
+                    "treatment": "Spray chlorothalonil or mancozeb."
+                },
+                {
+                    "name": "Leaf curl virus",
+                    "prevention": "Use virus-resistant varieties; control whiteflies.",
+                    "treatment": "Remove infected plants; spray imidacloprid for vectors."
+                }
+            ]
+        },
+        "regionalNotes": {
+            "IN": {
+                "MH": {
+                    "notes": "Nashik district is India's tomato capital."
+                },
+                "AP": {
+                    "notes": "Kurnool, Chittoor major production districts."
+                }
+            }
+        },
+        "tags": [
+            "vegetable",
+            "solanaceae",
+            "cash-crop"
+        ],
+        "lastUpdated": "2026-02-27T12:00:00Z",
+        "source": "seed"
+    },
+    {
+        "id": "potato",
+        "commonNames": {
+            "en": "Potato",
+            "hi": "आलू",
+            "te": "బంగాళదుంప"
+        },
+        "scientificName": "Solanum tuberosum",
+        "aliases": [
+            "aloo",
+            "batata"
+        ],
+        "seasons": [
+            "rabi"
+        ],
+        "soil": {
+            "best": [
+                "sandy-loam",
+                "loamy"
+            ],
+            "bad": [
+                "heavy clay",
+                "waterlogged"
+            ]
+        },
+        "timeToHarvestDays": 90,
+        "marketDemand": {
+            "peakMonths": [
+                1,
+                2,
+                3
+            ],
+            "seasonal": false,
+            "notes": "Year-round demand. Cold storage controls supply."
+        },
+        "growthConditions": {
+            "tempC": {
+                "min": 10,
+                "max": 22
+            },
+            "waterRequirement": "Medium",
+            "sunlight": "Full sun"
+        },
+        "riskAndPrevention": {
+            "diseases": [
+                {
+                    "name": "Late blight",
+                    "prevention": "Plant resistant varieties; avoid overhead irrigation.",
+                    "treatment": "Spray metalaxyl-mancozeb."
+                },
+                {
+                    "name": "Black scurf",
+                    "prevention": "Use disease-free seed tubers.",
+                    "treatment": "Seed treatment with pencycuron."
+                }
+            ]
+        },
+        "regionalNotes": {
+            "IN": {
+                "UP": {
+                    "notes": "UP produces 30%+ of India's potatoes. Agra and Farrukhabad are major districts."
+                }
+            }
+        },
+        "tags": [
+            "vegetable",
+            "tuber",
+            "staple"
+        ],
+        "lastUpdated": "2026-02-27T12:00:00Z",
+        "source": "seed"
+    },
+    {
+        "id": "cotton",
+        "commonNames": {
+            "en": "Cotton",
+            "hi": "कपास",
+            "te": "పత్తి"
+        },
+        "scientificName": "Gossypium hirsutum",
+        "aliases": [
+            "kapas",
+            "rui"
+        ],
+        "seasons": [
+            "kharif"
+        ],
+        "soil": {
+            "best": [
+                "black cotton soil",
+                "loamy"
+            ],
+            "bad": [
+                "sandy",
+                "saline"
+            ]
+        },
+        "timeToHarvestDays": 165,
+        "marketDemand": {
+            "peakMonths": [
+                10,
+                11,
+                12,
+                1
+            ],
+            "seasonal": true,
+            "notes": "Major textile industry raw material. MSP driven."
+        },
+        "growthConditions": {
+            "tempC": {
+                "min": 21,
+                "max": 35
+            },
+            "waterRequirement": "Medium",
+            "sunlight": "Full sun"
+        },
+        "riskAndPrevention": {
+            "diseases": [
+                {
+                    "name": "Bollworm",
+                    "prevention": "Use Bt cotton varieties; install pheromone traps.",
+                    "treatment": "Apply profenophos or cypermethrin."
+                },
+                {
+                    "name": "Wilt (Fusarium)",
+                    "prevention": "Crop rotation with cereals.",
+                    "treatment": "Use resistant varieties and treat seeds with carbendazim."
+                }
+            ]
+        },
+        "regionalNotes": {
+            "IN": {
+                "GJ": {
+                    "notes": "Gujarat is India's top cotton producer."
+                },
+                "MH": {
+                    "notes": "Vidarbha region. High pest pressure."
+                }
+            }
+        },
+        "tags": [
+            "fibre",
+            "cash-crop",
+            "commercial"
+        ],
+        "lastUpdated": "2026-02-27T12:00:00Z",
+        "source": "seed"
+    },
+    {
+        "id": "sugarcane",
+        "commonNames": {
+            "en": "Sugarcane",
+            "hi": "गन्ना",
+            "te": "చెరకు"
+        },
+        "scientificName": "Saccharum officinarum",
+        "aliases": [
+            "ganna",
+            "ikh"
+        ],
+        "seasons": [
+            "all_year"
+        ],
+        "soil": {
+            "best": [
+                "loamy",
+                "alluvial"
+            ],
+            "bad": [
+                "saline",
+                "waterlogged"
+            ]
+        },
+        "timeToHarvestDays": 365,
+        "marketDemand": {
+            "peakMonths": [
+                11,
+                12,
+                1,
+                2,
+                3
+            ],
+            "seasonal": true,
+            "notes": "Crushing season Oct-Mar. Jaggery and sugar mills demand."
+        },
+        "growthConditions": {
+            "tempC": {
+                "min": 20,
+                "max": 38
+            },
+            "waterRequirement": "High",
+            "sunlight": "Full sun"
+        },
+        "riskAndPrevention": {
+            "diseases": [
+                {
+                    "name": "Red rot",
+                    "prevention": "Use disease-free setts and resistant varieties.",
+                    "treatment": "Remove and burn affected canes."
+                },
+                {
+                    "name": "Top borer",
+                    "prevention": "Release Trichogramma parasites.",
+                    "treatment": "Apply carbofuran granules."
+                }
+            ]
+        },
+        "regionalNotes": {
+            "IN": {
+                "UP": {
+                    "notes": "UP is the largest sugarcane producer. Western UP belt."
+                }
+            }
+        },
+        "tags": [
+            "cash-crop",
+            "sugar",
+            "commercial"
+        ],
+        "lastUpdated": "2026-02-27T12:00:00Z",
+        "source": "seed"
+    },
+    {
+        "id": "onion",
+        "commonNames": {
+            "en": "Onion",
+            "hi": "प्याज",
+            "te": "ఉల్లిపాయ"
+        },
+        "scientificName": "Allium cepa",
+        "aliases": [
+            "pyaaz",
+            "kanda"
+        ],
+        "seasons": [
+            "rabi",
+            "kharif"
+        ],
+        "soil": {
+            "best": [
+                "loamy",
+                "sandy-loam"
+            ],
+            "bad": [
+                "heavy clay",
+                "waterlogged"
+            ]
+        },
+        "timeToHarvestDays": 110,
+        "marketDemand": {
+            "peakMonths": [
+                4,
+                5,
+                10,
+                11
+            ],
+            "seasonal": true,
+            "notes": "Prices spike during monsoon when storage stocks deplete."
+        },
+        "growthConditions": {
+            "tempC": {
+                "min": 13,
+                "max": 28
+            },
+            "waterRequirement": "Medium",
+            "sunlight": "Full sun"
+        },
+        "riskAndPrevention": {
+            "diseases": [
+                {
+                    "name": "Purple blotch",
+                    "prevention": "Avoid overhead irrigation.",
+                    "treatment": "Spray mancozeb or chlorothalonil."
+                },
+                {
+                    "name": "Thrips",
+                    "prevention": "Reflective mulch and sticky traps.",
+                    "treatment": "Spray fipronil or spinosad."
+                }
+            ]
+        },
+        "regionalNotes": {
+            "IN": {
+                "MH": {
+                    "notes": "Nashik produces 30%+ of India's onions."
+                }
+            }
+        },
+        "tags": [
+            "vegetable",
+            "bulb",
+            "cash-crop"
+        ],
+        "lastUpdated": "2026-02-27T12:00:00Z",
+        "source": "seed"
+    },
+    {
+        "id": "soybean",
+        "commonNames": {
+            "en": "Soybean",
+            "hi": "सोयाबीन",
+            "te": "సోయాబీన్"
+        },
+        "scientificName": "Glycine max",
+        "aliases": [
+            "soya"
+        ],
+        "seasons": [
+            "kharif"
+        ],
+        "soil": {
+            "best": [
+                "loamy",
+                "clay-loam"
+            ],
+            "bad": [
+                "sandy",
+                "waterlogged"
+            ]
+        },
+        "timeToHarvestDays": 100,
+        "marketDemand": {
+            "peakMonths": [
+                10,
+                11,
+                12
+            ],
+            "seasonal": true,
+            "notes": "Oilseed crush demand and poultry feed."
+        },
+        "growthConditions": {
+            "tempC": {
+                "min": 20,
+                "max": 30
+            },
+            "waterRequirement": "Medium",
+            "sunlight": "Full sun"
+        },
+        "riskAndPrevention": {
+            "diseases": [
+                {
+                    "name": "Yellow mosaic virus",
+                    "prevention": "Use resistant varieties; control whiteflies.",
+                    "treatment": "Remove infected plants and spray neem oil."
+                },
+                {
+                    "name": "Pod borer",
+                    "prevention": "Early sowing and intercropping.",
+                    "treatment": "Apply novaluron or chlorantraniliprole."
+                }
+            ]
+        },
+        "regionalNotes": {
+            "IN": {
+                "MP": {
+                    "notes": "Madhya Pradesh is India's soybean capital. Indore region."
+                }
+            }
+        },
+        "tags": [
+            "oilseed",
+            "legume",
+            "protein"
+        ],
+        "lastUpdated": "2026-02-27T12:00:00Z",
+        "source": "seed"
+    },
+    {
+        "id": "groundnut",
+        "commonNames": {
+            "en": "Groundnut",
+            "hi": "मूंगफली",
+            "te": "వేరుశెనగ"
+        },
+        "scientificName": "Arachis hypogaea",
+        "aliases": [
+            "peanut",
+            "moongfali"
+        ],
+        "seasons": [
+            "kharif",
+            "rabi"
+        ],
+        "soil": {
+            "best": [
+                "sandy-loam",
+                "red soil"
+            ],
+            "bad": [
+                "heavy clay",
+                "alkaline"
+            ]
+        },
+        "timeToHarvestDays": 110,
+        "marketDemand": {
+            "peakMonths": [
+                10,
+                11,
+                12,
+                1
+            ],
+            "seasonal": true,
+            "notes": "Groundnut oil demand steady. Festival season peaks."
+        },
+        "growthConditions": {
+            "tempC": {
+                "min": 22,
+                "max": 33
+            },
+            "waterRequirement": "Low",
+            "sunlight": "Full sun"
+        },
+        "riskAndPrevention": {
+            "diseases": [
+                {
+                    "name": "Tikka disease",
+                    "prevention": "Use resistant varieties.",
+                    "treatment": "Spray carbendazim or mancozeb."
+                },
+                {
+                    "name": "Stem rot",
+                    "prevention": "Seed treatment with Trichoderma.",
+                    "treatment": "Apply carbendazim drench."
+                }
+            ]
+        },
+        "regionalNotes": {
+            "IN": {
+                "GJ": {
+                    "notes": "Saurashtra region is major groundnut belt."
+                }
+            }
+        },
+        "tags": [
+            "oilseed",
+            "legume",
+            "cash-crop"
+        ],
+        "lastUpdated": "2026-02-27T12:00:00Z",
+        "source": "seed"
+    },
+    {
+        "id": "chilli",
+        "commonNames": {
+            "en": "Chilli",
+            "hi": "मिर्च",
+            "te": "మిరపకాయ"
+        },
+        "scientificName": "Capsicum annuum",
+        "aliases": [
+            "mirchi",
+            "pepper"
+        ],
+        "seasons": [
+            "kharif",
+            "rabi"
+        ],
+        "soil": {
+            "best": [
+                "loamy",
+                "sandy-loam"
+            ],
+            "bad": [
+                "heavy clay",
+                "waterlogged"
+            ]
+        },
+        "timeToHarvestDays": 90,
+        "marketDemand": {
+            "peakMonths": [
+                2,
+                3,
+                4
+            ],
+            "seasonal": true,
+            "notes": "Dried chilli demand year-round. Guntur is the price setter."
+        },
+        "growthConditions": {
+            "tempC": {
+                "min": 18,
+                "max": 35
+            },
+            "waterRequirement": "Medium",
+            "sunlight": "Full sun"
+        },
+        "riskAndPrevention": {
+            "diseases": [
+                {
+                    "name": "Anthracnose",
+                    "prevention": "Seed treatment and proper spacing.",
+                    "treatment": "Spray copper oxychloride or mancozeb."
+                },
+                {
+                    "name": "Thrips/Mites",
+                    "prevention": "Use yellow sticky traps.",
+                    "treatment": "Spray fipronil or abamectin."
+                }
+            ]
+        },
+        "regionalNotes": {
+            "IN": {
+                "AP": {
+                    "notes": "Guntur is India's chilli capital. Major export hub."
+                }
+            }
+        },
+        "tags": [
+            "spice",
+            "vegetable",
+            "cash-crop"
+        ],
+        "lastUpdated": "2026-02-27T12:00:00Z",
+        "source": "seed"
+    },
+    {
+        "id": "banana",
+        "commonNames": {
+            "en": "Banana",
+            "hi": "केला",
+            "te": "అరటి"
+        },
+        "scientificName": "Musa acuminata",
+        "aliases": [
+            "kela"
+        ],
+        "seasons": [
+            "all_year"
+        ],
+        "soil": {
+            "best": [
+                "loamy",
+                "alluvial"
+            ],
+            "bad": [
+                "saline",
+                "waterlogged"
+            ]
+        },
+        "timeToHarvestDays": 300,
+        "marketDemand": {
+            "peakMonths": [
+                1,
+                2,
+                3,
+                10,
+                11,
+                12
+            ],
+            "seasonal": false,
+            "notes": "Year-round fruit demand. Festival and temple offerings."
+        },
+        "growthConditions": {
+            "tempC": {
+                "min": 20,
+                "max": 35
+            },
+            "waterRequirement": "High",
+            "sunlight": "Full sun"
+        },
+        "riskAndPrevention": {
+            "diseases": [
+                {
+                    "name": "Panama wilt (TR4)",
+                    "prevention": "Use tissue-culture plantlets from certified labs.",
+                    "treatment": "No chemical cure. Remove and destroy affected plants."
+                },
+                {
+                    "name": "Sigatoka leaf spot",
+                    "prevention": "Remove affected leaves. Proper spacing.",
+                    "treatment": "Spray propiconazole or carbendazim."
+                }
+            ]
+        },
+        "regionalNotes": {
+            "IN": {
+                "TN": {
+                    "notes": "Theni and Trichy are major banana belts."
+                }
+            }
+        },
+        "tags": [
+            "fruit",
+            "perennial",
+            "plantation"
+        ],
+        "lastUpdated": "2026-02-27T12:00:00Z",
+        "source": "seed"
+    },
+    {
+        "id": "mango",
+        "commonNames": {
+            "en": "Mango",
+            "hi": "आम",
+            "te": "మామిడి"
+        },
+        "scientificName": "Mangifera indica",
+        "aliases": [
+            "aam"
+        ],
+        "seasons": [
+            "all_year"
+        ],
+        "soil": {
+            "best": [
+                "loamy",
+                "laterite",
+                "alluvial"
+            ],
+            "bad": [
+                "waterlogged",
+                "saline"
+            ]
+        },
+        "timeToHarvestDays": 150,
+        "marketDemand": {
+            "peakMonths": [
+                4,
+                5,
+                6,
+                7
+            ],
+            "seasonal": true,
+            "notes": "India is the world's largest mango producer. Export potential."
+        },
+        "growthConditions": {
+            "tempC": {
+                "min": 24,
+                "max": 40
+            },
+            "waterRequirement": "Low",
+            "sunlight": "Full sun"
+        },
+        "riskAndPrevention": {
+            "diseases": [
+                {
+                    "name": "Anthracnose",
+                    "prevention": "Pre-bloom copper sprays. Avoid overhead irrigation.",
+                    "treatment": "Spray carbendazim or thiophanate-methyl."
+                },
+                {
+                    "name": "Powdery mildew",
+                    "prevention": "Spray wettable sulphur at flowering.",
+                    "treatment": "Apply dinocap or karathane."
+                }
+            ]
+        },
+        "regionalNotes": {
+            "IN": {
+                "UP": {
+                    "notes": "Lucknow/Malihabad famous for Dasheri, Langra."
+                },
+                "AP": {
+                    "notes": "Banginapalli and Suvarnarekha varieties in Chittoor."
+                }
+            }
+        },
+        "tags": [
+            "fruit",
+            "tree",
+            "perennial",
+            "export"
+        ],
+        "lastUpdated": "2026-02-27T12:00:00Z",
+        "source": "seed"
+    },
+    {
+        "id": "mustard",
+        "commonNames": {
+            "en": "Mustard",
+            "hi": "सरसों",
+            "te": "ఆవాలు"
+        },
+        "scientificName": "Brassica juncea",
+        "aliases": [
+            "sarson",
+            "rai"
+        ],
+        "seasons": [
+            "rabi"
+        ],
+        "soil": {
+            "best": [
+                "loamy",
+                "sandy-loam"
+            ],
+            "bad": [
+                "heavy clay",
+                "waterlogged"
+            ]
+        },
+        "timeToHarvestDays": 110,
+        "marketDemand": {
+            "peakMonths": [
+                2,
+                3,
+                4
+            ],
+            "seasonal": true,
+            "notes": "Mustard oil is staple cooking oil in north India."
+        },
+        "growthConditions": {
+            "tempC": {
+                "min": 10,
+                "max": 25
+            },
+            "waterRequirement": "Low",
+            "sunlight": "Full sun"
+        },
+        "riskAndPrevention": {
+            "diseases": [
+                {
+                    "name": "White rust",
+                    "prevention": "Use resistant varieties; avoid dense planting.",
+                    "treatment": "Spray metalaxyl-mancozeb."
+                },
+                {
+                    "name": "Aphids",
+                    "prevention": "Timely sowing before mid-October.",
+                    "treatment": "Spray dimethoate or oxydemeton methyl."
+                }
+            ]
+        },
+        "regionalNotes": {
+            "IN": {
+                "RJ": {
+                    "notes": "Rajasthan produces 40%+ of India's mustard. Bharatpur belt."
+                }
+            }
+        },
+        "tags": [
+            "oilseed",
+            "rabi",
+            "spice"
+        ],
+        "lastUpdated": "2026-02-27T12:00:00Z",
+        "source": "seed"
+    },
+    {
+        "id": "turmeric",
+        "commonNames": {
+            "en": "Turmeric",
+            "hi": "हल्दी",
+            "te": "పసుపు"
+        },
+        "scientificName": "Curcuma longa",
+        "aliases": [
+            "haldi"
+        ],
+        "seasons": [
+            "kharif"
+        ],
+        "soil": {
+            "best": [
+                "loamy",
+                "red soil",
+                "alluvial"
+            ],
+            "bad": [
+                "waterlogged",
+                "alkaline"
+            ]
+        },
+        "timeToHarvestDays": 240,
+        "marketDemand": {
+            "peakMonths": [
+                1,
+                2,
+                3
+            ],
+            "seasonal": true,
+            "notes": "Steady domestic demand. Export to Middle East and SE Asia."
+        },
+        "growthConditions": {
+            "tempC": {
+                "min": 20,
+                "max": 35
+            },
+            "waterRequirement": "Medium",
+            "sunlight": "Partial shade"
+        },
+        "riskAndPrevention": {
+            "diseases": [
+                {
+                    "name": "Rhizome rot",
+                    "prevention": "Use disease-free rhizomes; raised beds.",
+                    "treatment": "Drench with copper oxychloride + metalaxyl."
+                },
+                {
+                    "name": "Leaf spot",
+                    "prevention": "Avoid overhead irrigation.",
+                    "treatment": "Spray mancozeb at 0.25%."
+                }
+            ]
+        },
+        "regionalNotes": {
+            "IN": {
+                "TS": {
+                    "notes": "Telangana's Nizamabad is the turmeric hub."
+                },
+                "AP": {
+                    "notes": "Kadapa, Kurnool produce Duggirala variety."
+                }
+            }
+        },
+        "tags": [
+            "spice",
+            "medicinal",
+            "cash-crop",
+            "export"
+        ],
+        "lastUpdated": "2026-02-27T12:00:00Z",
+        "source": "seed"
+    }
+]

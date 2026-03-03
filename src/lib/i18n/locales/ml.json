@@ -1,0 +1,52 @@
+{
+    "header": {
+        "dashboard": "ഡാഷ്‌ബോർഡ്",
+        "newScan": "പുതിയ സ്‌കാൻ",
+        "myAccount": "എന്റെ അക്കൗണ്ട്",
+        "profile": "പ്രൊഫൈൽ",
+        "support": "സഹായം",
+        "logout": "ലോഗ് ഔട്ട്",
+        "language": "മലയാളം",
+        "languageUpdateTitle": "ഭാഷാ ക്രമീകരണം അപ്‌ഡേറ്റ് ചെയ്‌തു",
+        "languageUpdateDescription": "ഭാഷ സജ്ജമാക്കി"
+    },
+    "dashboard": {
+        "title": "ഡാഷ്‌ബോർഡ്",
+        "exportPdf": "PDF കയറ്റുമതി",
+        "newScan": "പുതിയ സ്‌കാൻ",
+        "historyTitle": "വിള ആരോഗ്യ ചരിത്രം",
+        "historyDescription": "നിങ്ങളുടെ എല്ലാ മുൻ രോഗനിർണ്ണയങ്ങളുടെ ലോഗ്.",
+        "noHistoryTitle": "മുൻ രോഗനിർണ്ണയങ്ങളില്ല",
+        "noHistoryDescription": "നിങ്ങളുടെ ചരിത്രം ഇവിടെ കാണാൻ ആദ്യ സ്‌കാൻ ആരംഭിക്കുക.",
+        "frequencyTitle": "രോഗ ആവർത്തനം",
+        "frequencyDescription": "ഈ സീസണിൽ കണ്ടെത്തിയ രോഗങ്ങളുടെ അവലോകനം.",
+        "alertTitle": "ആദ്യകാല രോഗ മുന്നറിയിപ്പ്!",
+        "alertDescription": "നിങ്ങളുടെ പ്രദേശത്ത് വിള രോഗം കൂടുതലായി റിപ്പോർട്ട് ചെയ്‌തിട്ടുണ്ട്. നിങ്ങളുടെ വിളകൾ സൂക്ഷ്മമായി നിരീക്ഷിക്കുക.",
+        "historyTable": {
+            "image": "ചിത്രം",
+            "crop": "വിള",
+            "diagnosis": "രോഗനിർണ്ണയം",
+            "severity": "തീവ്രത",
+            "date": "തീയതി",
+            "actions": "പ്രവർത്തനങ്ങൾ",
+            "viewDetails": "വിശദാംശങ്ങൾ കാണുക",
+            "healthy": "ആരോഗ്യകരം",
+            "severityLevel": {
+                "low": "കുറഞ്ഞ",
+                "medium": "മധ്യം",
+                "high": "ഉയർന്ന",
+                "notApplicable": "ബാധകമല്ല"
+            }
+        },
+        "deleteDialog": {
+            "title": "തീർച്ചയായും ഉറപ്പാണോ?",
+            "description": "ഈ പ്രവർത്തനം പഴയപടിയാക്കാൻ കഴിയില്ല. ഇത് \"{cropType}\" രോഗനിർണ്ണയം സ്ഥിരമായി ഇല്ലാതാക്കും.",
+            "cancel": "റദ്ദാക്കുക",
+            "delete": "ഇല്ലാതാക്കുക",
+            "successTitle": "രോഗനിർണ്ണയം ഇല്ലാതാക്കി",
+            "successDescription": "\"{cropType}\" രോഗനിർണ്ണയം ഇല്ലാതാക്കി.",
+            "errorTitle": "ഇല്ലാതാക്കൽ പരാജയപ്പെട്ടു",
+            "errorDescription": "രോഗനിർണ്ണയം ഇല്ലാതാക്കാൻ കഴിഞ്ഞില്ല. വീണ്ടും ശ്രമിക്കുക."
+        }
+    }
+}

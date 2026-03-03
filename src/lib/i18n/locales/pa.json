@@ -1,0 +1,52 @@
+{
+    "header": {
+        "dashboard": "ਡੈਸ਼ਬੋਰਡ",
+        "newScan": "ਨਵੀਂ ਸਕੈਨ",
+        "myAccount": "ਮੇਰਾ ਖਾਤਾ",
+        "profile": "ਪ੍ਰੋਫਾਈਲ",
+        "support": "ਸਹਾਇਤਾ",
+        "logout": "ਲੌਗ ਆਊਟ",
+        "language": "ਪੰਜਾਬੀ",
+        "languageUpdateTitle": "ਭਾਸ਼ਾ ਸੈਟਿੰਗ ਅਪਡੇਟ ਹੋਈ",
+        "languageUpdateDescription": "ਭਾਸ਼ਾ ਸੈੱਟ ਕੀਤੀ ਗਈ"
+    },
+    "dashboard": {
+        "title": "ਡੈਸ਼ਬੋਰਡ",
+        "exportPdf": "PDF ਨਿਰਯਾਤ",
+        "newScan": "ਨਵੀਂ ਸਕੈਨ",
+        "historyTitle": "ਫ਼ਸਲ ਸਿਹਤ ਇਤਿਹਾਸ",
+        "historyDescription": "ਤੁਹਾਡੀਆਂ ਸਾਰੀਆਂ ਪਿਛਲੀਆਂ ਜਾਂਚਾਂ ਦਾ ਲੌਗ।",
+        "noHistoryTitle": "ਕੋਈ ਪਿਛਲੀ ਜਾਂਚ ਨਹੀਂ",
+        "noHistoryDescription": "ਆਪਣਾ ਇਤਿਹਾਸ ਇੱਥੇ ਦੇਖਣ ਲਈ ਪਹਿਲੀ ਸਕੈਨ ਸ਼ੁਰੂ ਕਰੋ।",
+        "frequencyTitle": "ਬਿਮਾਰੀ ਦੀ ਬਾਰੰਬਾਰਤਾ",
+        "frequencyDescription": "ਇਸ ਮੌਸਮ ਵਿੱਚ ਖੋਜੀਆਂ ਗਈਆਂ ਬਿਮਾਰੀਆਂ ਦੀ ਸੰਖੇਪ ਜਾਣਕਾਰੀ।",
+        "alertTitle": "ਅਰੰਭਕ ਪ੍ਰਕੋਪ ਚੇਤਾਵਨੀ!",
+        "alertDescription": "ਤੁਹਾਡੇ ਖੇਤਰ ਵਿੱਚ ਫ਼ਸਲ ਦੀ ਬਿਮਾਰੀ ਦੀ ਉੱਚ ਘਟਨਾਵਾਂ ਦੀ ਰਿਪੋਰਟ ਕੀਤੀ ਗਈ ਹੈ। ਆਪਣੀਆਂ ਫ਼ਸਲਾਂ ਦੀ ਧਿਆਨ ਨਾਲ ਨਿਗਰਾਨੀ ਕਰੋ।",
+        "historyTable": {
+            "image": "ਤਸਵੀਰ",
+            "crop": "ਫ਼ਸਲ",
+            "diagnosis": "ਜਾਂਚ",
+            "severity": "ਗੰਭੀਰਤਾ",
+            "date": "ਤਾਰੀਖ਼",
+            "actions": "ਕਾਰਵਾਈਆਂ",
+            "viewDetails": "ਵੇਰਵੇ ਦੇਖੋ",
+            "healthy": "ਸਿਹਤਮੰਦ",
+            "severityLevel": {
+                "low": "ਘੱਟ",
+                "medium": "ਦਰਮਿਆਨਾ",
+                "high": "ਉੱਚ",
+                "notApplicable": "ਲਾਗੂ ਨਹੀਂ"
+            }
+        },
+        "deleteDialog": {
+            "title": "ਕੀ ਤੁਸੀਂ ਪੂਰੀ ਤਰ੍ਹਾਂ ਯਕੀਨੀ ਹੋ?",
+            "description": "ਇਹ ਕਾਰਵਾਈ ਅਣਕੀਤੀ ਨਹੀਂ ਕੀਤੀ ਜਾ ਸਕਦੀ। ਇਹ \"{cropType}\" ਦੀ ਜਾਂਚ ਸਥਾਈ ਤੌਰ 'ਤੇ ਮਿਟਾ ਦੇਵੇਗੀ।",
+            "cancel": "ਰੱਦ ਕਰੋ",
+            "delete": "ਮਿਟਾਓ",
+            "successTitle": "ਜਾਂਚ ਮਿਟਾਈ ਗਈ",
+            "successDescription": "\"{cropType}\" ਦੀ ਜਾਂਚ ਮਿਟਾਈ ਗਈ ਹੈ।",
+            "errorTitle": "ਮਿਟਾਉਣਾ ਅਸਫਲ",
+            "errorDescription": "ਜਾਂਚ ਮਿਟਾਈ ਨਹੀਂ ਜਾ ਸਕੀ। ਕਿਰਪਾ ਕਰਕੇ ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰੋ।"
+        }
+    }
+}

@@ -1,0 +1,52 @@
+{
+    "header": {
+        "dashboard": "ড্যাশবোর্ড",
+        "newScan": "নতুন স্ক্যান",
+        "myAccount": "আমার অ্যাকাউন্ট",
+        "profile": "প্রোফাইল",
+        "support": "সহায়তা",
+        "logout": "লগ আউট",
+        "language": "বাংলা",
+        "languageUpdateTitle": "ভাষা সেটিং আপডেট হয়েছে",
+        "languageUpdateDescription": "ভাষা সেট করা হয়েছে"
+    },
+    "dashboard": {
+        "title": "ড্যাশবোর্ড",
+        "exportPdf": "PDF রপ্তানি",
+        "newScan": "নতুন স্ক্যান",
+        "historyTitle": "ফসল স্বাস্থ্যের ইতিহাস",
+        "historyDescription": "আপনার সমস্ত পূর্ববর্তী রোগনির্ণয়ের লগ।",
+        "noHistoryTitle": "কোনো পূর্ববর্তী রোগনির্ণয় নেই",
+        "noHistoryDescription": "আপনার ইতিহাস এখানে দেখতে প্রথম স্ক্যান শুরু করুন।",
+        "frequencyTitle": "রোগের কম্পাঙ্ক",
+        "frequencyDescription": "এই মৌসুমে সনাক্ত করা রোগগুলির সংক্ষিপ্ত বিবরণ।",
+        "alertTitle": "প্রাথমিক প্রাদুর্ভাব সতর্কতা!",
+        "alertDescription": "আপনার এলাকায় ফসলের রোগের উচ্চ ঘটনা রিপোর্ট করা হয়েছে। আপনার ফসল সাবধানে পর্যবেক্ষণ করুন।",
+        "historyTable": {
+            "image": "ছবি",
+            "crop": "ফসল",
+            "diagnosis": "রোগনির্ণয়",
+            "severity": "তীব্রতা",
+            "date": "তারিখ",
+            "actions": "ক্রিয়া",
+            "viewDetails": "বিস্তারিত দেখুন",
+            "healthy": "সুস্থ",
+            "severityLevel": {
+                "low": "কম",
+                "medium": "মাঝারি",
+                "high": "উচ্চ",
+                "notApplicable": "প্রযোজ্য নয়"
+            }
+        },
+        "deleteDialog": {
+            "title": "আপনি কি সম্পূর্ণ নিশ্চিত?",
+            "description": "এই কাজটি পূর্বাবস্থায় ফেরানো যাবে না। এটি \"{cropType}\" রোগনির্ণয় স্থায়ীভাবে মুছে দেবে।",
+            "cancel": "বাতিল",
+            "delete": "মুছুন",
+            "successTitle": "রোগনির্ণয় মুছে দেওয়া হয়েছে",
+            "successDescription": "\"{cropType}\" রোগনির্ণয় মুছে দেওয়া হয়েছে।",
+            "errorTitle": "মুছতে ব্যর্থ",
+            "errorDescription": "রোগনির্ণয় মুছতে পারা যায়নি। আবার চেষ্টা করুন।"
+        }
+    }
+}

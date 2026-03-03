@@ -1,0 +1,52 @@
+{
+    "header": {
+        "dashboard": "ಡ್ಯಾಶ್‌ಬೋರ್ಡ್",
+        "newScan": "ಹೊಸ ಸ್ಕ್ಯಾನ್",
+        "myAccount": "ನನ್ನ ಖಾತೆ",
+        "profile": "ಪ್ರೊಫೈಲ್",
+        "support": "ಸಹಾಯ",
+        "logout": "ಲಾಗ್ ಔಟ್",
+        "language": "ಕನ್ನಡ",
+        "languageUpdateTitle": "ಭಾಷಾ ಸೆಟ್ಟಿಂಗ್ ಅಪ್ಡೇಟ್ ಆಗಿದೆ",
+        "languageUpdateDescription": "ಭಾಷೆ ಹೊಂದಿಸಲಾಗಿದೆ"
+    },
+    "dashboard": {
+        "title": "ಡ್ಯಾಶ್‌ಬೋರ್ಡ್",
+        "exportPdf": "PDF ರಫ್ತು",
+        "newScan": "ಹೊಸ ಸ್ಕ್ಯಾನ್",
+        "historyTitle": "ಬೆಳೆ ಆರೋಗ್ಯ ಇತಿಹಾಸ",
+        "historyDescription": "ನಿಮ್ಮ ಎಲ್ಲ ಹಿಂದಿನ ರೋಗನಿರ್ಣಯಗಳ ದಾಖಲೆ.",
+        "noHistoryTitle": "ಹಿಂದಿನ ರೋಗನಿರ್ಣಯಗಳಿಲ್ಲ",
+        "noHistoryDescription": "ನಿಮ್ಮ ಇತಿಹಾಸ ಇಲ್ಲಿ ನೋಡಲು ಮೊದಲ ಸ್ಕ್ಯಾನ್ ಪ್ರಾರಂಭಿಸಿ.",
+        "frequencyTitle": "ರೋಗದ ಆವರ್ತನ",
+        "frequencyDescription": "ಈ ಋತುವಿನಲ್ಲಿ ಪತ್ತೆಯಾದ ರೋಗಗಳ ಅವಲೋಕನ.",
+        "alertTitle": "ಆರಂಭಿಕ ರೋಗ ಎಚ್ಚರಿಕೆ!",
+        "alertDescription": "ನಿಮ್ಮ ಪ್ರದೇಶದಲ್ಲಿ ಬೆಳೆ ರೋಗ ಹೆಚ್ಚಾಗಿ ಕಾಣಿಸಿಕೊಂಡಿದೆ. ನಿಮ್ಮ ಬೆಳೆಗಳನ್ನು ಎಚ್ಚರಿಕೆಯಿಂದ ಮೇಲ್ವಿಚಾರಣೆ ಮಾಡಿ.",
+        "historyTable": {
+            "image": "ಚಿತ್ರ",
+            "crop": "ಬೆಳೆ",
+            "diagnosis": "ರೋಗನಿರ್ಣಯ",
+            "severity": "ತೀವ್ರತೆ",
+            "date": "ದಿನಾಂಕ",
+            "actions": "ಕ್ರಿಯೆಗಳು",
+            "viewDetails": "ವಿವರಗಳನ್ನು ನೋಡಿ",
+            "healthy": "ಆರೋಗ್ಯಕರ",
+            "severityLevel": {
+                "low": "ಕಡಿಮೆ",
+                "medium": "ಮಧ್ಯಮ",
+                "high": "ಹೆಚ್ಚು",
+                "notApplicable": "ಅನ್ವಯಿಸುವುದಿಲ್ಲ"
+            }
+        },
+        "deleteDialog": {
+            "title": "ಖಚಿತವಾಗಿ ಖಾತ್ರಿಯೇ?",
+            "description": "ಈ ಕ್ರಿಯೆಯನ್ನು ರದ್ದು ಮಾಡಲು ಸಾಧ್ಯವಿಲ್ಲ. ಇದು \"{cropType}\" ರೋಗನಿರ್ಣಯವನ್ನು ಶಾಶ್ವತವಾಗಿ ಅಳಿಸುತ್ತದೆ.",
+            "cancel": "ರದ್ದು",
+            "delete": "ಅಳಿಸಿ",
+            "successTitle": "ರೋಗನಿರ್ಣಯ ಅಳಿಸಲಾಗಿದೆ",
+            "successDescription": "\"{cropType}\" ರೋಗನಿರ್ಣಯ ಅಳಿಸಲಾಗಿದೆ.",
+            "errorTitle": "ಅಳಿಸುವಿಕೆ ವಿಫಲ",
+            "errorDescription": "ರೋಗನಿರ್ಣಯವನ್ನು ಅಳಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ."
+        }
+    }
+}

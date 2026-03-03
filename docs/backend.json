@@ -1,0 +1,91 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "User Profile",
+      "description": "Represents a user's profile information.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "The user's unique ID."
+        },
+        "email": {
+          "type": "string",
+          "format": "email",
+          "description": "The user's email address."
+        },
+        "displayName": {
+          "type": "string",
+          "description": "The user's display name."
+        },
+        "photoURL": {
+          "type": "string",
+          "format": "uri",
+          "description": "The URL of the user's profile picture."
+        }
+      },
+      "required": ["id", "email"]
+    },
+    "CropDiagnosis": {
+      "title": "Crop Diagnosis",
+      "description": "Represents a single crop diagnosis performed by a user.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "The unique ID for the diagnosis."
+        },
+        "userId": {
+          "type": "string",
+          "description": "The ID of the user who performed the diagnosis."
+        },
+        "cropType": {
+          "type": "string",
+          "description": "The type of crop diagnosed."
+        },
+        "image": {
+          "type": "string",
+          "description": "The data URI of the scanned image."
+        },
+        "diagnosis": {
+          "type": "object",
+          "properties": {
+            "diseaseName": { "type": "string" },
+            "confidenceScore": { "type": "number" },
+            "severityLevel": { "type": "string" },
+            "description": { "type": "string" },
+            "whyWeThink": { "type": "string" }
+          }
+        },
+        "treatment": {
+          "type": "object",
+          "properties": {
+             "pesticideRecommendation": { "type": "object" },
+             "organicSolutionRecommendation": { "type": "object" },
+             "applicationMethods": { "type": "array" },
+             "preventionTips": { "type": "array" },
+             "generalAdvice": { "type": "string" }
+          }
+        },
+        "createdAt": {
+            "type": "string",
+            "format": "date-time"
+        }
+      },
+      "required": ["id", "userId", "cropType", "image", "diagnosis", "createdAt"]
+    }
+  },
+  "auth": {
+    "providers": ["google.com", "password"]
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": { "$ref": "#/entities/UserProfile" },
+      "description": "Stores user profile information."
+    },
+    "/users/{userId}/cropDiagnoses/{diagnosisId}": {
+      "schema": { "$ref": "#/entities/CropDiagnosis" },
+      "description": "Stores a user's crop diagnosis history."
+    }
+  }
+}
