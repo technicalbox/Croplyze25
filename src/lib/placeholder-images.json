@@ -1,0 +1,28 @@
+{
+  "placeholderImages": [
+    {
+      "id": "farmer-avatar",
+      "description": "Avatar for a farmer user",
+      "imageUrl": "https://images.unsplash.com/photo-1665281875409-805601db83d0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxwZXJzb24lMjBmYXJtZXJ8ZW58MHx8fHwxNzcxMzIyMjgxfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "person farmer"
+    },
+    {
+      "id": "tomato-healthy",
+      "description": "A healthy tomato plant",
+      "imageUrl": "https://images.unsplash.com/photo-1686278895718-26a2331d7297?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHx0b21hdG8lMjBwbGFudHxlbnwwfHx8fDE3NzEzMjIyODF8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "tomato plant"
+    },
+    {
+      "id": "potato-blight",
+      "description": "A potato plant with late blight disease",
+      "imageUrl": "https://images.unsplash.com/photo-1648768940344-9e110879e0c0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxwb3RhdG8lMjBwbGFudCUyMGRpc2Vhc2V8ZW58MHx8fHwxNzcxMzIyMjgxfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "potato plant disease"
+    },
+    {
+      "id": "corn-rust",
+      "description": "A corn plant with common rust disease",
+      "imageUrl": "https://images.unsplash.com/photo-1721353140580-8027c2a4a0f4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxjb3JuJTIwcGxhbnQlMjBkaXNlYXNlfGVufDB8fHx8MTc3MTMyMjI4Mnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "corn plant disease"
+    }
+  ]
+}

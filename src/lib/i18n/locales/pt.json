@@ -1,0 +1,52 @@
+{
+    "header": {
+        "dashboard": "Painel",
+        "newScan": "Nova Verificação",
+        "myAccount": "Minha Conta",
+        "profile": "Perfil",
+        "support": "Suporte",
+        "logout": "Sair",
+        "language": "Português",
+        "languageUpdateTitle": "Configuração de Idioma Atualizada",
+        "languageUpdateDescription": "Idioma definido para"
+    },
+    "dashboard": {
+        "title": "Painel",
+        "exportPdf": "Exportar PDF",
+        "newScan": "Nova Verificação",
+        "historyTitle": "Histórico de Saúde das Culturas",
+        "historyDescription": "Um registro de todos os seus diagnósticos anteriores.",
+        "noHistoryTitle": "Nenhum diagnóstico anterior",
+        "noHistoryDescription": "Inicie a primeira verificação para ver seu histórico aqui.",
+        "frequencyTitle": "Frequência de Doenças",
+        "frequencyDescription": "Visão geral das doenças detectadas nesta temporada.",
+        "alertTitle": "Alerta de Surto Precoce!",
+        "alertDescription": "Alta incidência de doenças nas culturas foi relatada em sua área. Monitore suas culturas com atenção.",
+        "historyTable": {
+            "image": "Imagem",
+            "crop": "Cultura",
+            "diagnosis": "Diagnóstico",
+            "severity": "Gravidade",
+            "date": "Data",
+            "actions": "Ações",
+            "viewDetails": "Ver Detalhes",
+            "healthy": "Saudável",
+            "severityLevel": {
+                "low": "Baixo",
+                "medium": "Médio",
+                "high": "Alto",
+                "notApplicable": "Não Aplicável"
+            }
+        },
+        "deleteDialog": {
+            "title": "Tem certeza absoluta?",
+            "description": "Esta ação não pode ser desfeita. Isso excluirá permanentemente o diagnóstico de \"{cropType}\" do seu histórico.",
+            "cancel": "Cancelar",
+            "delete": "Excluir",
+            "successTitle": "Diagnóstico Excluído",
+            "successDescription": "O diagnóstico de \"{cropType}\" foi excluído.",
+            "errorTitle": "Falha ao Excluir",
+            "errorDescription": "Não foi possível excluir o diagnóstico. Tente novamente."
+        }
+    }
+}

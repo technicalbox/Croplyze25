@@ -1,0 +1,52 @@
+{
+    "header": {
+        "dashboard": "Dashboard",
+        "newScan": "Neuer Scan",
+        "myAccount": "Mein Konto",
+        "profile": "Profil",
+        "support": "Hilfe",
+        "logout": "Abmelden",
+        "language": "Deutsch",
+        "languageUpdateTitle": "Spracheinstellung aktualisiert",
+        "languageUpdateDescription": "Sprache eingestellt auf"
+    },
+    "dashboard": {
+        "title": "Dashboard",
+        "exportPdf": "PDF exportieren",
+        "newScan": "Neuer Scan",
+        "historyTitle": "Erntezustand-Verlauf",
+        "historyDescription": "Ein Protokoll all Ihrer bisherigen Diagnosen.",
+        "noHistoryTitle": "Keine bisherigen Diagnosen",
+        "noHistoryDescription": "Starten Sie Ihren ersten Scan, um Ihren Verlauf hier zu sehen.",
+        "frequencyTitle": "Krankheitshäufigkeit",
+        "frequencyDescription": "Überblick über die in dieser Saison erkannten Krankheiten.",
+        "alertTitle": "Früh-Ausbruch-Warnung!",
+        "alertDescription": "In Ihrer Region wurde eine hohe Inzidenz von Erntekrankheiten gemeldet. Überwachen Sie Ihre Ernte sorgfältig.",
+        "historyTable": {
+            "image": "Bild",
+            "crop": "Ernte",
+            "diagnosis": "Diagnose",
+            "severity": "Schweregrad",
+            "date": "Datum",
+            "actions": "Aktionen",
+            "viewDetails": "Details anzeigen",
+            "healthy": "Gesund",
+            "severityLevel": {
+                "low": "Niedrig",
+                "medium": "Mittel",
+                "high": "Hoch",
+                "notApplicable": "Nicht zutreffend"
+            }
+        },
+        "deleteDialog": {
+            "title": "Sind Sie völlig sicher?",
+            "description": "Diese Aktion kann nicht rückgängig gemacht werden. Dadurch wird die Diagnose für \"{cropType}\" dauerhaft aus Ihrem Verlauf gelöscht.",
+            "cancel": "Abbrechen",
+            "delete": "Löschen",
+            "successTitle": "Diagnose gelöscht",
+            "successDescription": "Die Diagnose für \"{cropType}\" wurde gelöscht.",
+            "errorTitle": "Löschen fehlgeschlagen",
+            "errorDescription": "Die Diagnose konnte nicht gelöscht werden. Bitte versuchen Sie es erneut."
+        }
+    }
+}

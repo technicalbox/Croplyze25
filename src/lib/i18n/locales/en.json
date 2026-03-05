@@ -1,0 +1,52 @@
+{
+  "header": {
+    "dashboard": "Dashboard",
+    "newScan": "New Scan",
+    "myAccount": "My Account",
+    "profile": "Profile",
+    "support": "Support",
+    "logout": "Logout",
+    "language": "English",
+    "languageUpdateTitle": "Language setting updated",
+    "languageUpdateDescription": "Language has been set to"
+  },
+  "dashboard": {
+      "title": "Dashboard",
+      "exportPdf": "Export PDF",
+      "newScan": "New Scan",
+      "historyTitle": "Crop Health History",
+      "historyDescription": "A log of all your past diagnoses.",
+      "noHistoryTitle": "No Past Diagnoses",
+      "noHistoryDescription": "Start your first scan to see your history here.",
+      "frequencyTitle": "Disease Frequency",
+      "frequencyDescription": "An overview of detected diseases this season.",
+      "alertTitle": "Early Outbreak Alert!",
+      "alertDescription": "High incidence of a crop disease has been reported in your area. Monitor your crops closely and consider preventive measures.",
+      "historyTable": {
+        "image": "Image",
+        "crop": "Crop",
+        "diagnosis": "Diagnosis",
+        "severity": "Severity",
+        "date": "Date",
+        "actions": "Actions",
+        "viewDetails": "View Details",
+        "healthy": "Healthy",
+        "severityLevel": {
+          "low": "Low",
+          "medium": "Medium",
+          "high": "High",
+          "notApplicable": "Not Applicable"
+        }
+      },
+      "deleteDialog": {
+        "title": "Are you absolutely sure?",
+        "description": "This action cannot be undone. This will permanently delete the diagnosis for \"{cropType}\" from your history.",
+        "cancel": "Cancel",
+        "delete": "Delete",
+        "successTitle": "Diagnosis Deleted",
+        "successDescription": "The diagnosis for \"{cropType}\" has been removed.",
+        "errorTitle": "Deletion Failed",
+        "errorDescription": "Could not delete the diagnosis. Please try again."
+      }
+  }
+}

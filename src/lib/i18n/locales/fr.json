@@ -1,0 +1,52 @@
+{
+  "header": {
+    "dashboard": "Tableau de bord",
+    "newScan": "Nouveau Scan",
+    "myAccount": "Mon Compte",
+    "profile": "Profil",
+    "support": "Support",
+    "logout": "Déconnexion",
+    "language": "Français",
+    "languageUpdateTitle": "Paramètres de langue mis à jour",
+    "languageUpdateDescription": "La langue a été définie sur"
+  },
+  "dashboard": {
+      "title": "Tableau de bord",
+      "exportPdf": "Exporter en PDF",
+      "newScan": "Nouveau Scan",
+      "historyTitle": "Historique de santé des cultures",
+      "historyDescription": "Un journal de tous vos diagnostics passés.",
+      "noHistoryTitle": "Aucun diagnostic antérieur",
+      "noHistoryDescription": "Commencez votre premier scan pour voir votre historique ici.",
+      "frequencyTitle": "Fréquence des maladies",
+      "frequencyDescription": "Un aperçu des maladies détectées cette saison.",
+      "alertTitle": "Alerte précoce d'épidémie !",
+      "alertDescription": "Une forte incidence d'une maladie des cultures a été signalée dans votre région. Surveillez attentivement vos cultures et envisagez des mesures préventives.",
+      "historyTable": {
+        "image": "Image",
+        "crop": "Culture",
+        "diagnosis": "Diagnostic",
+        "severity": "Gravité",
+        "date": "Date",
+        "actions": "Actions",
+        "viewDetails": "Voir les détails",
+        "healthy": "Sain",
+        "severityLevel": {
+          "low": "Faible",
+          "medium": "Moyenne",
+          "high": "Élevée",
+          "notApplicable": "Non applicable"
+        }
+      },
+      "deleteDialog": {
+        "title": "Êtes-vous absolument certain(e) ?",
+        "description": "Cette action est irréversible. Le diagnostic pour \"{cropType}\" sera définitivement supprimé de votre historique.",
+        "cancel": "Annuler",
+        "delete": "Supprimer",
+        "successTitle": "Diagnostic Supprimé",
+        "successDescription": "Le diagnostic pour \"{cropType}\" a été supprimé.",
+        "errorTitle": "Échec de la Suppression",
+        "errorDescription": "Impossible de supprimer le diagnostic. Veuillez réessayer."
+      }
+  }
+}
