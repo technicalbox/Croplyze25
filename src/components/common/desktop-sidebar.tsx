@@ -15,6 +15,7 @@ import {
     ChevronRight,
     Leaf,
     Sprout,
+    FlaskConical,
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import Logo from '@/components/logo';
@@ -49,6 +50,7 @@ const navSections: NavSection[] = [
             { href: '/farming-partner/profit-predictor', label: 'Profit Predictor', icon: TrendingUp },
             { href: '/farming-partner/crop-compare', label: 'Crop Comparison', icon: GitCompareArrows },
             { href: '/farming-partner/crop-combination', label: 'Crop Combination', icon: Sprout },
+            { href: '/farming-partner/treatment-predictor', label: 'Treatment Predictor', icon: FlaskConical },
         ],
     },
     {

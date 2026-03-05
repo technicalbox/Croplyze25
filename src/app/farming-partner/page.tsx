@@ -8,7 +8,7 @@ import {
     Wheat, CalendarDays, Tractor, ChevronRight,
     Sprout, BarChart3, Droplets, Bug, TrendingUp, Package,
     Sparkles, ScanLine, Bot, IndianRupee, Target, Scale,
-    FileBarChart,
+    FileBarChart, FlaskConical,
 } from 'lucide-react';
 import Link from 'next/link';
 import { haptics } from '@/lib/haptics';
@@ -143,6 +143,17 @@ const FARM_TOOLS = [
         featureIcons: [Sprout, Bug, TrendingUp],
         gradient: 'from-emerald-600 to-lime-700',
         shadow: 'shadow-emerald-500/25',
+    },
+    {
+        href: '/farming-partner/treatment-predictor',
+        icon: FlaskConical,
+        title: 'Treatment Predictor',
+        description: 'Verify medicine suitability, predict treatment success & profit impact.',
+        tag: 'New',
+        features: ['Suitability score', 'Profit impact', 'Alternatives'],
+        featureIcons: [Target, IndianRupee, Sparkles],
+        gradient: 'from-pink-600 to-rose-700',
+        shadow: 'shadow-pink-500/25',
     },
 ];
 
