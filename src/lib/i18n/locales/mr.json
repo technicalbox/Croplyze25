@@ -1,0 +1,52 @@
+{
+    "header": {
+        "dashboard": "डॅशबोर्ड",
+        "newScan": "नवीन स्कॅन",
+        "myAccount": "माझे खाते",
+        "profile": "प्रोफाइल",
+        "support": "मदत",
+        "logout": "लॉग आउट",
+        "language": "मराठी",
+        "languageUpdateTitle": "भाषा सेटिंग अपडेट झाली",
+        "languageUpdateDescription": "भाषा सेट केली गेली"
+    },
+    "dashboard": {
+        "title": "डॅशबोर्ड",
+        "exportPdf": "PDF निर्यात",
+        "newScan": "नवीन स्कॅन",
+        "historyTitle": "पीक आरोग्य इतिहास",
+        "historyDescription": "तुमच्या सर्व मागील निदानांचा लॉग.",
+        "noHistoryTitle": "कोणतेही मागील निदान नाही",
+        "noHistoryDescription": "तुमचा इतिहास येथे पाहण्यासाठी पहिली स्कॅन सुरू करा.",
+        "frequencyTitle": "रोग वारंवारता",
+        "frequencyDescription": "या हंगामात आढळलेल्या रोगांचे विहंगावलोकन.",
+        "alertTitle": "लवकर उद्रेक चेतावणी!",
+        "alertDescription": "तुमच्या क्षेत्रात पीक रोगाची उच्च घटना नोंदवली गेली आहे. तुमच्या पिकांवर काळजीपूर्वक लक्ष ठेवा.",
+        "historyTable": {
+            "image": "प्रतिमा",
+            "crop": "पीक",
+            "diagnosis": "निदान",
+            "severity": "तीव्रता",
+            "date": "तारीख",
+            "actions": "क्रिया",
+            "viewDetails": "तपशील पहा",
+            "healthy": "निरोगी",
+            "severityLevel": {
+                "low": "कमी",
+                "medium": "मध्यम",
+                "high": "जास्त",
+                "notApplicable": "लागू नाही"
+            }
+        },
+        "deleteDialog": {
+            "title": "तुम्हाला खात्री आहे का?",
+            "description": "ही क्रिया पूर्ववत केली जाऊ शकत नाही. हे \"{cropType}\" चे निदान कायमचे हटवेल.",
+            "cancel": "रद्द करा",
+            "delete": "हटवा",
+            "successTitle": "निदान हटवले",
+            "successDescription": "\"{cropType}\" चे निदान हटवले.",
+            "errorTitle": "हटवणे अयशस्वी",
+            "errorDescription": "निदान हटवता आले नाही. कृपया पुन्हा प्रयत्न करा."
+        }
+    }
+}

@@ -1,0 +1,52 @@
+{
+  "header": {
+    "dashboard": "仪表板",
+    "newScan": "新扫描",
+    "myAccount": "我的账户",
+    "profile": "个人资料",
+    "support": "支持",
+    "logout": "登出",
+    "language": "中文",
+    "languageUpdateTitle": "语言设置已更新",
+    "languageUpdateDescription": "语言已设置为"
+  },
+  "dashboard": {
+      "title": "仪表板",
+      "exportPdf": "导出PDF",
+      "newScan": "新扫描",
+      "historyTitle": "作物健康史",
+      "historyDescription": "您所有过去诊断的日志。",
+      "noHistoryTitle": "没有过去的诊断",
+      "noHistoryDescription": "开始您的第一次扫描以在此处查看您的历史记录。",
+      "frequencyTitle": "疾病频率",
+      "frequencyDescription": "本季检测到的疾病概览。",
+      "alertTitle": "早期疫情警报！",
+      "alertDescription": "您所在地区据报发生率很高的作物病害。请密切监测您的作物并考虑采取预防措施。",
+      "historyTable": {
+        "image": "图片",
+        "crop": "作物",
+        "diagnosis": "诊断",
+        "severity": "严重程度",
+        "date": "日期",
+        "actions": "操作",
+        "viewDetails": "查看详情",
+        "healthy": "健康",
+        "severityLevel": {
+          "low": "低",
+          "medium": "中",
+          "high": "高",
+          "notApplicable": "不适用"
+        }
+      },
+      "deleteDialog": {
+        "title": "您确定要这样做吗？",
+        "description": "此操作无法撤销。这将从您的历史记录中永久删除“{cropType}”的诊断。",
+        "cancel": "取消",
+        "delete": "删除",
+        "successTitle": "诊断已删除",
+        "successDescription": "“{cropType}”的诊断已被删除。",
+        "errorTitle": "删除失败",
+        "errorDescription": "无法删除诊断。请重试。"
+      }
+  }
+}

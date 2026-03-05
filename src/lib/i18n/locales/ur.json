@@ -1,0 +1,52 @@
+{
+  "header": {
+    "dashboard": "ڈیش بورڈ",
+    "newScan": "نیا اسکین",
+    "myAccount": "میرا اکاونٹ",
+    "profile": "پروفائل",
+    "support": "مدد",
+    "logout": "لاگ آوٹ",
+    "language": "اردو",
+    "languageUpdateTitle": "زبان کی ترتیب کو اپ ڈیٹ کر دیا گیا ہے۔",
+    "languageUpdateDescription": "زبان کو پر سیٹ کر دیا گیا ہے۔"
+  },
+  "dashboard": {
+      "title": "ڈیش بورڈ",
+      "exportPdf": "پی ڈی ایف برآمد کریں",
+      "newScan": "نیا اسکین",
+      "historyTitle": "فصل کی صحت کی تاریخ",
+      "historyDescription": "آپ کی تمام ماضی کی تشخیصات کا ایک لاگ۔",
+      "noHistoryTitle": "کوئی ماضی کی تشخیص نہیں",
+      "noHistoryDescription": "اپنی تاریخ یہاں دیکھنے کے لیے اپنا پہلا اسکین شروع کریں۔",
+      "frequencyTitle": "بیماری کی تعدد",
+      "frequencyDescription": "اس سیزن میں پائے جانے والے امراض کا ایک جائزہ۔",
+      "alertTitle": "ابتدائی وبا کا انتباہ!",
+      "alertDescription": "آپ کے علاقے میں فصلوں کی بیماری کے زیادہ واقعات کی اطلاع ملی ہے۔ اپنی فصلوں کی قریب سے نگرانی کریں اور احتیاطی تدابیر پر غور کریں۔",
+      "historyTable": {
+        "image": "تصویر",
+        "crop": "فصل",
+        "diagnosis": "تشخیص",
+        "severity": "شدت",
+        "date": "تاریخ",
+        "actions": "اعمال",
+        "viewDetails": "تفصیلات دیکھیں",
+        "healthy": "صحت مند",
+        "severityLevel": {
+          "low": "کم",
+          "medium": "درمیانہ",
+          "high": "زیادہ",
+          "notApplicable": "لاگو نہیں"
+        }
+      },
+      "deleteDialog": {
+        "title": "کیا آپ کو بالکل یقین ہے؟",
+        "description": "اس کارروائی کو واپس نہیں لیا جا سکتا۔ یہ آپ کی تاریخ سے \"{cropType}\" کی تشخیص کو مستقل طور پر حذف کر دے گا۔",
+        "cancel": "منسوخ کریں",
+        "delete": "حذف کریں",
+        "successTitle": "تشخیص حذف ہوگئی",
+        "successDescription": "\"{cropType}\" کی تشخیص کو ہٹا دیا گیا ہے۔",
+        "errorTitle": "حذف کرنے میں ناکامی",
+        "errorDescription": "تشخیص کو حذف نہیں کیا جا سکا۔ براہ کرم دوبارہ کوشش کریں۔"
+      }
+  }
+}

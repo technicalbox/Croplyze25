@@ -1,0 +1,52 @@
+{
+    "header": {
+        "dashboard": "ડૅશબોર્ડ",
+        "newScan": "નવું સ્કૅન",
+        "myAccount": "મારો એકાઉન્ટ",
+        "profile": "પ્રોફાઇલ",
+        "support": "સહાય",
+        "logout": "લૉગ આઉટ",
+        "language": "ગુજરાતી",
+        "languageUpdateTitle": "ભાષા સેટિંગ અપડેટ થઈ",
+        "languageUpdateDescription": "ભાષા સેટ કરવામાં આવી"
+    },
+    "dashboard": {
+        "title": "ડૅશબોર્ડ",
+        "exportPdf": "PDF નિકાસ",
+        "newScan": "નવું સ્કૅન",
+        "historyTitle": "પાક આરોગ્ય ઇતિહાસ",
+        "historyDescription": "તમારા તમામ પૂર્વ નિદાનોનો લૉગ.",
+        "noHistoryTitle": "કોઈ પૂર્વ નિદાન નહીં",
+        "noHistoryDescription": "તમારો ઇતિહાસ અહીં જોવા પ્રથમ સ્કૅન શરૂ કરો.",
+        "frequencyTitle": "રોગ આવૃત્તિ",
+        "frequencyDescription": "આ સીઝનમાં શોધાયેલ રોગોની ઝાંખી.",
+        "alertTitle": "પ્રારંભિક ફાટી નીકળવાની ચેતવણી!",
+        "alertDescription": "તમારા વિસ્તારમાં પાક રોગ વધુ નોંધાયો છે. તમારા પાકની કાળજીથી દેખરેખ કરો.",
+        "historyTable": {
+            "image": "છબી",
+            "crop": "પાક",
+            "diagnosis": "નિદાન",
+            "severity": "તીવ્રતા",
+            "date": "તારીખ",
+            "actions": "ક્રિયાઓ",
+            "viewDetails": "વિગતો જુઓ",
+            "healthy": "સ્વસ્થ",
+            "severityLevel": {
+                "low": "ઓછું",
+                "medium": "મધ્યમ",
+                "high": "વધુ",
+                "notApplicable": "લાગુ નથી"
+            }
+        },
+        "deleteDialog": {
+            "title": "શું તમે ખરેખર ખાતરી ધરાવો છો?",
+            "description": "આ ક્રિયા પૂર્વવત્ કરી શકાતી નથી. આ \"{cropType}\" નિદાન કાયમ માટે ભૂંસી નાખશે.",
+            "cancel": "રદ કરો",
+            "delete": "ભૂંસો",
+            "successTitle": "નિદાન ભૂંસ્યું",
+            "successDescription": "\"{cropType}\" નિદાન ભૂંસ્યું.",
+            "errorTitle": "ભૂંસવું નિષ્ફળ",
+            "errorDescription": "નિદાન ભૂંસી શકાયું નહિ. ફરી પ્રયાસ કરો."
+        }
+    }
+}

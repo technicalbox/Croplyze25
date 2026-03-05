@@ -1,0 +1,52 @@
+{
+    "header": {
+        "dashboard": "Dashibodi",
+        "newScan": "Skani Mpya",
+        "myAccount": "Akaunti Yangu",
+        "profile": "Wasifu",
+        "support": "Msaada",
+        "logout": "Toka",
+        "language": "Kiswahili",
+        "languageUpdateTitle": "Mipangilio ya Lugha Imesasishwa",
+        "languageUpdateDescription": "Lugha imewekwa kuwa"
+    },
+    "dashboard": {
+        "title": "Dashibodi",
+        "exportPdf": "Hamisha PDF",
+        "newScan": "Skani Mpya",
+        "historyTitle": "Historia ya Afya ya Mazao",
+        "historyDescription": "Kumbukumbu ya uchunguzi wako wote wa awali.",
+        "noHistoryTitle": "Hakuna uchunguzi wa awali",
+        "noHistoryDescription": "Anza skani yako ya kwanza ili uone historia yako hapa.",
+        "frequencyTitle": "Mzunguko wa Magonjwa",
+        "frequencyDescription": "Muhtasari wa magonjwa yaliyogunduliwa msimu huu.",
+        "alertTitle": "Onyo la Mlipuko wa Mapema!",
+        "alertDescription": "Kiwango cha juu cha ugonjwa wa mazao kimeripotiwa katika eneo lako. Angalia mazao yako kwa makini.",
+        "historyTable": {
+            "image": "Picha",
+            "crop": "Zao",
+            "diagnosis": "Uchunguzi",
+            "severity": "Ukali",
+            "date": "Tarehe",
+            "actions": "Vitendo",
+            "viewDetails": "Angalia Maelezo",
+            "healthy": "Mzima",
+            "severityLevel": {
+                "low": "Chini",
+                "medium": "Wastani",
+                "high": "Juu",
+                "notApplicable": "Haifai"
+            }
+        },
+        "deleteDialog": {
+            "title": "Je, una uhakika kabisa?",
+            "description": "Kitendo hiki hakiwezi kutenduliwa. Kitafuta kabisa uchunguzi wa \"{cropType}\" kutoka historia yako.",
+            "cancel": "Ghairi",
+            "delete": "Futa",
+            "successTitle": "Uchunguzi Umefutwa",
+            "successDescription": "Uchunguzi wa \"{cropType}\" umefutwa.",
+            "errorTitle": "Kufuta Kumeshindwa",
+            "errorDescription": "Haikuweza kufuta uchunguzi. Tafadhali jaribu tena."
+        }
+    }
+}

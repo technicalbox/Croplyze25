@@ -1,0 +1,52 @@
+{
+  "header": {
+    "dashboard": "Tablero",
+    "newScan": "Nuevo Escaneo",
+    "myAccount": "Mi Cuenta",
+    "profile": "Perfil",
+    "support": "Soporte",
+    "logout": "Cerrar Sesión",
+    "language": "Español",
+    "languageUpdateTitle": "Configuración de idioma actualizada",
+    "languageUpdateDescription": "El idioma se ha establecido en"
+  },
+  "dashboard": {
+      "title": "Tablero",
+      "exportPdf": "Exportar PDF",
+      "newScan": "Nuevo Escaneo",
+      "historyTitle": "Historial de Salud del Cultivo",
+      "historyDescription": "Un registro de todos sus diagnósticos pasados.",
+      "noHistoryTitle": "Sin Diagnósticos Anteriores",
+      "noHistoryDescription": "Comience su primer escaneo para ver su historial aquí.",
+      "frequencyTitle": "Frecuencia de Enfermedades",
+      "frequencyDescription": "Un resumen de las enfermedades detectadas esta temporada.",
+      "alertTitle": "¡Alerta de Brote Temprano!",
+      "alertDescription": "Se ha informado una alta incidencia de una enfermedad de los cultivos en su área. Monitoree sus cultivos de cerca y considere medidas preventivas.",
+      "historyTable": {
+        "image": "Imagen",
+        "crop": "Cultivo",
+        "diagnosis": "Diagnóstico",
+        "severity": "Gravedad",
+        "date": "Fecha",
+        "actions": "Acciones",
+        "viewDetails": "Ver Detalles",
+        "healthy": "Saludable",
+        "severityLevel": {
+          "low": "Baja",
+          "medium": "Media",
+          "high": "Alta",
+          "notApplicable": "No Aplica"
+        }
+      },
+      "deleteDialog": {
+        "title": "¿Estás absolutamente seguro?",
+        "description": "Esta acción no se puede deshacer. Esto eliminará permanentemente el diagnóstico de \"{cropType}\" de tu historial.",
+        "cancel": "Cancelar",
+        "delete": "Eliminar",
+        "successTitle": "Diagnóstico Eliminado",
+        "successDescription": "El diagnóstico de \"{cropType}\" ha sido eliminado.",
+        "errorTitle": "Error al Eliminar",
+        "errorDescription": "No se pudo eliminar el diagnóstico. Por favor, inténtalo de nuevo."
+      }
+  }
+}
