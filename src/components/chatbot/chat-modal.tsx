@@ -7,7 +7,7 @@
  */
 
 import { useState, useEffect } from 'react';
-import { ArrowLeft, MoreVertical, Wifi, Plus, MessageSquare } from 'lucide-react';
+import { ArrowLeft, MoreVertical, Wifi, Plus, MessageSquare, Mic } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { haptics } from '@/lib/haptics';
 import { useChatbot } from './chat-provider';
@@ -43,7 +43,8 @@ export default function ChatModal() {
         isOpen, closeChat,
         sessionTitle, detectedLanguage,
         startNewSession, messages,
-        sessions, loadSession
+        sessions, loadSession,
+        openVoice,
     } = useChatbot();
 
     // Lock body scroll when modal is open
@@ -113,6 +114,15 @@ export default function ChatModal() {
                     title="Menu"
                 >
                     <MoreVertical className="h-4 w-4 text-gray-600 dark:text-white" />
+                </button>
+
+                {/* Voice mode toggle */}
+                <button
+                    onClick={() => { haptics.medium(); closeChat(); openVoice(); }}
+                    className="flex-none w-9 h-9 rounded-full flex items-center justify-center bg-gradient-to-br from-amber-400 to-orange-500 shadow-md shadow-orange-500/30 active:scale-95 transition-transform"
+                    title="Switch to voice mode"
+                >
+                    <Mic className="h-4 w-4 text-white" />
                 </button>
             </header>
 

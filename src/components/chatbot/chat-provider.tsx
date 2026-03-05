@@ -3,6 +3,7 @@
 /**
  * @fileOverview Chat context provider — manages session state, sends messages,
  * and persists chat turns to Firestore (client-side).
+ * Extended with voice mode toggle and offline caching.
  */
 
 import {
@@ -20,6 +21,7 @@ import {
 } from '@/farming-partner/farming-chatbot-client';
 import type { ChatMessage, ChatSession } from '@/farming-partner/farming-chatbot-service';
 import type { ChatMessageInput } from '@/ai/flows/farming-chatbot-flow';
+import { cacheResponse, getCachedResponse } from '@/hooks/useVoiceAssistant';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -44,10 +46,17 @@ export interface ChatContextValue {
     detectedLanguage: string;
     cropContext: ChatMessageInput['cropContext'] | null;
     setCropContext: (ctx: ChatMessageInput['cropContext'] | null) => void;
-    sendMessage: (text: string) => Promise<void>;
+    /** Sends a message to Fasal AI. Returns the AI reply text, or null on error. */
+    sendMessage: (text: string) => Promise<string | null>;
     startNewSession: () => void;
     sessions: ChatSession[];
     loadSession: (sessionId: string) => Promise<void>;
+    // Voice mode
+    isVoiceOpen: boolean;
+    openVoice: () => void;
+    closeVoice: () => void;
+    /** Set a language override for the next sendMessage calls (used by voice modal). null = use global app language. */
+    setVoiceLanguage: (lang: string | null) => void;
 }
 
 const ChatCtx = createContext<ChatContextValue | null>(null);
@@ -67,6 +76,7 @@ export function ChatProvider({ children }: { children: ReactNode }) {
     const { user } = useUser();
     const { language } = useTranslation();
     const [isOpen, setIsOpen] = useState(false);
+    const [isVoiceOpen, setIsVoiceOpen] = useState(false);
     const [messages, setMessages] = useState<UiMessage[]>([]);
     const [isLoading, setIsLoading] = useState(false);
     const [sessionId, setSessionId] = useState<string | null>(null);
@@ -76,6 +86,11 @@ export function ChatProvider({ children }: { children: ReactNode }) {
     const [cropContext, setCropContext] = useState<ChatMessageInput['cropContext'] | null>(null);
     const [sessions, setSessions] = useState<ChatSession[]>([]);
     const historyRef = useRef<{ role: 'user' | 'model'; content: string }[]>([]);
+    /** Language override set by voice modal — ref so sendMessage always reads latest value */
+    const voiceLanguageRef = useRef<string | null>(null);
+    const setVoiceLanguage = useCallback((lang: string | null) => {
+        voiceLanguageRef.current = lang;
+    }, []);
 
     // Restore session on mount
     useEffect(() => {
@@ -103,6 +118,8 @@ export function ChatProvider({ children }: { children: ReactNode }) {
 
     const openChat = useCallback(() => setIsOpen(true), []);
     const closeChat = useCallback(() => setIsOpen(false), []);
+    const openVoice = useCallback(() => setIsVoiceOpen(true), []);
+    const closeVoice = useCallback(() => setIsVoiceOpen(false), []);
 
     const startNewSession = useCallback(() => {
         setMessages([]);
@@ -132,8 +149,8 @@ export function ChatProvider({ children }: { children: ReactNode }) {
         } catch { /* safe */ }
     }, [user]);
 
-    const sendMessage = useCallback(async (text: string) => {
-        if (!text.trim() || isLoading || !user) return;
+    const sendMessage = useCallback(async (text: string): Promise<string | null> => {
+        if (!text.trim() || isLoading || !user) return null;
         const now = Date.now();
 
         // 1. Optimistic user message
@@ -145,6 +162,11 @@ export function ChatProvider({ children }: { children: ReactNode }) {
         // Build history to send (last N turns before adding this one)
         const historyToSend = historyRef.current.slice(-MAX_HISTORY);
 
+        // Voice language override takes priority, then fall back to global app language.
+        // voiceLanguageRef is a ref so it's always the latest value — no stale closures.
+        const effectiveLang = voiceLanguageRef.current || language;
+        console.log('[sendMessage] language →', effectiveLang, '(voiceOverride:', voiceLanguageRef.current, ', appLang:', language, ')');
+
         try {
             // 2. Call API
             const res = await fetch('/api/chat/message', {
@@ -155,7 +177,7 @@ export function ChatProvider({ children }: { children: ReactNode }) {
                 },
                 body: JSON.stringify({
                     message: text,
-                    language: language,  // from user's profile language setting
+                    language: effectiveLang,
                     chatHistory: historyToSend,
                     cropContext: cropContext ?? undefined,
                     sessionId: sessionId ?? undefined,
@@ -165,21 +187,26 @@ export function ChatProvider({ children }: { children: ReactNode }) {
             if (!res.ok) throw new Error(await res.text());
             const data = await res.json();
 
-            // 3. Append AI reply
+            // 3. Extract actual AI response
+            const aiResponse: string = data.reply;
+            console.log('[Fasal AI] AI Response:', aiResponse);
+
+            // 4. Append AI reply to chat + cache for offline
+            cacheResponse(text, aiResponse);
             const aiMsg: UiMessage = {
                 id: `m-${Date.now()}`,
                 role: 'model',
-                content: data.reply,
+                content: aiResponse,
                 createdAt: Date.now() + 1,
             };
             setMessages(prev => [...prev, aiMsg]);
             setSuggestedFollowUps(data.suggestedFollowUps ?? []);
             setDetectedLanguage(data.detectedLanguage ?? 'en');
 
-            // 4. Update history ref
-            historyRef.current = [...historyRef.current, { role: 'user', content: text }, { role: 'model', content: data.reply }].slice(-MAX_HISTORY);
+            // 5. Update history ref
+            historyRef.current = [...historyRef.current, { role: 'user' as const, content: text }, { role: 'model' as const, content: aiResponse }].slice(-MAX_HISTORY);
 
-            // 5. Persist to Firestore
+            // 6. Persist to Firestore
             let sid = sessionId;
             if (!sid) {
                 // New session
@@ -199,21 +226,30 @@ export function ChatProvider({ children }: { children: ReactNode }) {
                 // Update updatedAt
                 await updateChatSession(user.uid, sid, { updatedAt: Date.now() });
             }
-            await addChatTurn(user.uid, sid, text, data.reply, now);
+            await addChatTurn(user.uid, sid, text, aiResponse, now);
+
+            // 7. Return the actual AI response to the caller
+            return aiResponse;
 
         } catch (err) {
             console.error('[ChatProvider] sendMessage failed:', err);
+            // Try offline cache before giving an error
+            const cached = getCachedResponse(text);
+            const fallbackContent = cached
+                ? `${cached}\n\n(⚠️ Offline — showing cached response)`
+                : 'Sorry, I could not connect. Please try again.';
             const errMsg: UiMessage = {
                 id: `err-${Date.now()}`,
                 role: 'model',
-                content: 'Sorry, I could not connect. Please try again.',
+                content: fallbackContent,
                 createdAt: Date.now(),
             };
             setMessages(prev => [...prev, errMsg]);
+            return null;
         } finally {
             setIsLoading(false);
         }
-    }, [isLoading, user, sessionId, cropContext]);
+    }, [isLoading, user, sessionId, cropContext, language]);
 
     /** Opens the chat modal and auto-sends a prefilled message after the animation settles. */
     const openChatWithMessage = useCallback((message: string) => {
@@ -230,6 +266,8 @@ export function ChatProvider({ children }: { children: ReactNode }) {
             cropContext, setCropContext,
             sendMessage, startNewSession,
             sessions, loadSession,
+            isVoiceOpen, openVoice, closeVoice,
+            setVoiceLanguage,
         }}>
             {children}
         </ChatCtx.Provider>

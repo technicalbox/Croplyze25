@@ -9,6 +9,7 @@ import DesktopLayoutShell from '@/components/common/desktop-layout-shell';
 import { ChatProvider } from '@/components/chatbot/chat-provider';
 import ChatFab from '@/components/chatbot/chat-fab';
 import ChatModal from '@/components/chatbot/chat-modal';
+import VoiceWrapper from '@/components/chatbot/voice-wrapper';
 import { RegionProvider } from '@/providers/region-provider';
 import SplashScreen from '@/components/common/splash-screen';
 import { PageTranslator } from '@/components/common/PageTranslator';
@@ -52,6 +53,8 @@ export default function RootLayout({
                   {/* Global floating chat button + full-screen modal */}
                   <ChatFab />
                   <ChatModal />
+                  {/* Voice assistant FAB + full-screen voice modal */}
+                  <VoiceWrapper />
                 </ChatProvider>
               </RegionProvider>
             </TranslationProvider>

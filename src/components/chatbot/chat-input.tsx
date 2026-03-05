@@ -45,15 +45,10 @@ export default function ChatInput() {
         rec.interimResults = true;
 
         // Support specific language preferences, defaulting to Indian English
-        if (language === 'te') {
-            rec.lang = 'te-IN';
-        } else if (language === 'hi') {
-            rec.lang = 'hi-IN';
-        } else if (language === 'ta') {
-            rec.lang = 'ta-IN';
-        } else {
-            rec.lang = 'en-IN';
-        }
+        const langMap: Record<string, string> = {
+            te: 'te-IN', hi: 'hi-IN', ta: 'ta-IN', kn: 'kn-IN', mr: 'mr-IN',
+        };
+        rec.lang = langMap[language] || 'en-IN';
 
         rec.onresult = (e: any) => {
             const transcript = Array.from(e.results)

@@ -6,10 +6,11 @@
  * with left green bar accent, and the animated thinking orb.
  */
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { cn } from '@/lib/utils';
 import { haptics } from '@/lib/haptics';
 import { useChatbot, type UiMessage } from './chat-provider';
+import { Volume2, VolumeX } from 'lucide-react';
 
 // ─── Typing dots ──────────────────────────────────────────────────────────────
 
@@ -102,11 +103,49 @@ function InlineText({ text }: { text: string }) {
 }
 
 function AiBubble({ content }: { content: string }) {
+    const { detectedLanguage } = useChatbot();
+    const [isSpeaking, setIsSpeaking] = useState(false);
     const clean = stripHtml(content);
     const lines = clean.split('\n').filter(l => l.trim() !== '');
 
     // Count bullet lines to number them
     let bulletCount = 0;
+
+    const handleSpeak = () => {
+        if (typeof window === 'undefined' || !('speechSynthesis' in window)) return;
+        haptics.light();
+
+        if (isSpeaking) {
+            window.speechSynthesis.cancel();
+            setIsSpeaking(false);
+            return;
+        }
+
+        const langMap: Record<string, string> = {
+            en: 'en-IN', hi: 'hi-IN', te: 'te-IN', ta: 'ta-IN', kn: 'kn-IN', mr: 'mr-IN',
+        };
+        const bcp47 = langMap[detectedLanguage] || langMap['en'];
+
+        const plainText = clean
+            .replace(/\*\*(.*?)\*\*/g, '$1')
+            .replace(/^[-•]\s+/gm, '')
+            .replace(/\n{2,}/g, '. ')
+            .replace(/\n/g, '. ')
+            .trim();
+
+        const utterance = new SpeechSynthesisUtterance(plainText);
+        utterance.lang = bcp47;
+        utterance.rate = 0.9;
+        const voices = window.speechSynthesis.getVoices();
+        const match = voices.find(v => v.lang === bcp47) || voices.find(v => v.lang.startsWith(detectedLanguage));
+        if (match) utterance.voice = match;
+
+        utterance.onstart = () => setIsSpeaking(true);
+        utterance.onend = () => setIsSpeaking(false);
+        utterance.onerror = () => setIsSpeaking(false);
+
+        window.speechSynthesis.speak(utterance);
+    };
 
     return (
         <div className="flex flex-col items-start gap-1 max-w-[90%]">
@@ -135,14 +174,30 @@ function AiBubble({ content }: { content: string }) {
                             );
                         }
 
-                        // Non-bullet lines reset bullet counter only if separated by empty lines
-                        // (preserve sequential numbering within a block)
+                        // Non-bullet lines
                         return (
                             <p key={i} className="text-sm text-gray-800 dark:text-gray-100 leading-relaxed">
                                 <InlineText text={trimmed} />
                             </p>
                         );
                     })}
+                </div>
+                {/* Read-aloud button */}
+                <div className="flex justify-end px-3 pb-2">
+                    <button
+                        onClick={handleSpeak}
+                        className={cn(
+                            'flex items-center gap-1 px-2 py-1 rounded-lg text-[10px] font-medium transition-all active:scale-95',
+                            isSpeaking
+                                ? 'bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300'
+                                : 'bg-gray-100 dark:bg-white/10 text-gray-500 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-white/15',
+                        )}
+                        title={isSpeaking ? 'Stop reading' : 'Read aloud'}
+                    >
+                        {isSpeaking
+                            ? <><VolumeX className="h-3 w-3" /> Stop</>
+                            : <><Volume2 className="h-3 w-3" /> Listen</>}
+                    </button>
                 </div>
             </div>
         </div>
