@@ -8,6 +8,7 @@ import {
     Wheat, CalendarDays, Tractor, ChevronRight,
     Sprout, BarChart3, Droplets, Bug, TrendingUp, Package,
     Sparkles, ScanLine, Bot, IndianRupee, Target, Scale,
+    FileBarChart,
 } from 'lucide-react';
 import Link from 'next/link';
 import { haptics } from '@/lib/haptics';
@@ -89,6 +90,17 @@ const FARM_TOOLS = [
         shadow: 'shadow-teal-500/25',
     },
     {
+        href: '/growth-timeline?tab=weekly-report',
+        icon: FileBarChart,
+        title: 'Weekly Growth Report',
+        description: 'AI-powered weekly crop analysis with health summary, risks, and recommendations.',
+        tag: 'New',
+        features: ['Health analysis', 'Risk detection', 'Weekly insights'],
+        featureIcons: [BarChart3, Bug, Sparkles],
+        gradient: 'from-cyan-600 to-blue-700',
+        shadow: 'shadow-cyan-500/25',
+    },
+    {
         href: '/harvest-optimizer',
         icon: Tractor,
         title: 'Harvest Optimizer',
@@ -120,6 +132,17 @@ const FARM_TOOLS = [
         featureIcons: [BarChart3, Bug, Sparkles],
         gradient: 'from-sky-600 to-blue-700',
         shadow: 'shadow-sky-500/25',
+    },
+    {
+        href: '/farming-partner/crop-combination',
+        icon: Sprout,
+        title: 'Crop Combination',
+        description: 'Find crops that grow well together for better yield & soil health.',
+        tag: 'New',
+        features: ['Companion crops', 'Pest reduction', 'Yield boost'],
+        featureIcons: [Sprout, Bug, TrendingUp],
+        gradient: 'from-emerald-600 to-lime-700',
+        shadow: 'shadow-emerald-500/25',
     },
 ];
 

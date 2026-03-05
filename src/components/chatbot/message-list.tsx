@@ -174,7 +174,8 @@ function AiBubble({ content }: { content: string }) {
                             );
                         }
 
-                        // Non-bullet lines
+                        // Non-bullet lines reset bullet counter only if separated by empty lines
+                        // (preserve sequential numbering within a block)
                         return (
                             <p key={i} className="text-sm text-gray-800 dark:text-gray-100 leading-relaxed">
                                 <InlineText text={trimmed} />

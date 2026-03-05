@@ -16,11 +16,12 @@ const DetectCropDiseaseInputSchema = z.object({
     .describe(
       "A photo of a crop, as a data URI that must include a MIME type and use Base64 encoding. Expected format: 'data:<mimetype>;base64,<encoded_data>'."
     ),
-  cropType: z.string().describe('The type of crop being analyzed (e.g., "tomato", "potato", "wheat").'),
+
 });
 export type DetectCropDiseaseInput = z.infer<typeof DetectCropDiseaseInputSchema>;
 
 const DetectCropDiseaseOutputSchema = z.object({
+  cropType: z.string().describe('The type of crop identified from the image (e.g., "Tomato", "Potato", "Wheat").'),
   diseaseName: z.string().describe('The name of the detected disease, or "No disease detected" if healthy.'),
   confidenceScore: z.number().min(0.0).max(1.0).describe('A confidence score for the diagnosis, ranging from 0.0 to 1.0.'),
   severityLevel: z.enum(['Low', 'Medium', 'High', 'Not Applicable']).describe('The severity level of the detected disease.'),
@@ -37,17 +38,17 @@ const detectCropDiseasePromptCfg = {
   name: 'detectCropDiseasePrompt',
   input: { schema: DetectCropDiseaseInputSchema },
   output: { schema: DetectCropDiseaseOutputSchema },
-  prompt: `You are an expert agricultural AI assistant specialized in diagnosing crop diseases.
-Your task is to analyze the provided image of a '{{{cropType}}}' crop and identify any potential diseases affecting it.
+  prompt: `You are an expert agricultural AI assistant specialized in identifying crops and diagnosing crop diseases.
+Your task is to analyze the provided image, first identify the type of crop shown, and then identify any potential diseases affecting it.
 
 Provide the following information in a JSON format:
-1.  **diseaseName**: The name of the detected disease, or "No disease detected" if the crop appears healthy.
-2.  **confidenceScore**: A numerical score between 0.0 and 1.0 representing your confidence in the diagnosis. 1.0 is highest confidence.
-3.  **severityLevel**: Categorize the disease severity as 'Low', 'Medium', 'High', or 'Not Applicable' if no disease is found.
-4.  **description**: A brief, informative description of the identified disease, including its typical symptoms and potential impact on the crop.
-5.  **whyWeThink**: A detailed explanation for your diagnosis and confidence score. Describe what specific visual cues (e.g., leaf patterns, lesion clustering, color changes, texture) in the image led to your conclusion.
+1.  **cropType**: The type of crop identified in the image (e.g., "Tomato", "Potato", "Wheat", "Rice"). Identify this from the visual characteristics of the plant.
+2.  **diseaseName**: The name of the detected disease, or "No disease detected" if the crop appears healthy.
+3.  **confidenceScore**: A numerical score between 0.0 and 1.0 representing your confidence in the diagnosis. 1.0 is highest confidence.
+4.  **severityLevel**: Categorize the disease severity as 'Low', 'Medium', 'High', or 'Not Applicable' if no disease is found.
+5.  **description**: A brief, informative description of the identified disease, including its typical symptoms and potential impact on the crop.
+6.  **whyWeThink**: A detailed explanation for your diagnosis and confidence score. Describe what specific visual cues (e.g., leaf patterns, lesion clustering, color changes, texture) in the image led to your conclusion.
 
-Crop Type: {{{cropType}}}
 Image: {{media url=photoDataUri}}`,
 };
 

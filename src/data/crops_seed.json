@@ -162,7 +162,7 @@
   {
     "id": "maize",
     "commonNames": {
-      "en": "Maize",
+      "en": "Maize (Corn)",
       "hi": "मक्का",
       "te": "మొక్కజొన్న"
     },
@@ -4837,7 +4837,7 @@
   {
     "id": "organic_maize",
     "commonNames": {
-      "en": "Organic Maize",
+      "en": "Organic Maize (Corn)",
       "hi": "मक्का",
       "te": "మొక్కజొన్న"
     },
@@ -9589,7 +9589,7 @@
   {
     "id": "hybrid_maize",
     "commonNames": {
-      "en": "Hybrid Maize",
+      "en": "Hybrid Maize (Corn)",
       "hi": "मक्का",
       "te": "మొక్కజొన్న"
     },
@@ -14341,7 +14341,7 @@
   {
     "id": "local_maize",
     "commonNames": {
-      "en": "Local Maize",
+      "en": "Local Maize (Corn)",
       "hi": "मक्का",
       "te": "మొక్కజొన్న"
     },
@@ -19093,7 +19093,7 @@
   {
     "id": "dwarf_maize",
     "commonNames": {
-      "en": "Dwarf Maize",
+      "en": "Dwarf Maize (Corn)",
       "hi": "मक्का",
       "te": "మొక్కజొన్న"
     },
@@ -23845,7 +23845,7 @@
   {
     "id": "early_maize",
     "commonNames": {
-      "en": "Early Maize",
+      "en": "Early Maize (Corn)",
       "hi": "मक्का",
       "te": "మొక్కజొన్న"
     },
@@ -28597,7 +28597,7 @@
   {
     "id": "late_maize",
     "commonNames": {
-      "en": "Late Maize",
+      "en": "Late Maize (Corn)",
       "hi": "मक्का",
       "te": "మొక్కజొన్న"
     },

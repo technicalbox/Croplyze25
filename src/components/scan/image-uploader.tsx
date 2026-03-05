@@ -12,7 +12,6 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { UploadCloud, Leaf, Loader2, Camera, AlertTriangle, FlipHorizontal2, X } from 'lucide-react';
 import Image from 'next/image';
-import { CropSearchInput } from '@/components/crops/CropSearchInput';
 
 import { Button } from '../ui/button';
 import { useRouter } from 'next/navigation';
@@ -37,7 +36,7 @@ export default function ImageUploader() {
   const [preview, setPreview] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
-  const [cropType, setCropType] = useState<string>('');
+
   const addNotification = useNotification();
   const { user } = useUser();
   const firestore = useFirestore();
@@ -128,21 +127,21 @@ export default function ImageUploader() {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (!cropType || !preview || !user) return;
+    if (!preview || !user) return;
     haptics.heavy();
     setIsLoading(true);
 
     try {
       const diagnosisResult = await detectCropDisease({
         photoDataUri: preview,
-        cropType: cropType,
+
       });
 
       const reportData = {
         userId: user.uid,
         diagnosis: diagnosisResult,
         image: preview,
-        cropType: cropType,
+        cropType: diagnosisResult.cropType,
         createdAt: new Date(), // Add JS date for session storage
       };
 
@@ -169,7 +168,7 @@ export default function ImageUploader() {
       <CardHeader className="text-center">
         <CardTitle className="text-2xl font-bold">Diagnose Your Crop</CardTitle>
         <CardDescription>
-          Upload or take a photo of the affected plant.
+          Upload or take a photo — we&apos;ll identify the crop and diagnose it automatically.
         </CardDescription>
       </CardHeader>
       <CardContent className="flex-1 flex flex-col">
@@ -271,29 +270,13 @@ export default function ImageUploader() {
             </Tabs>
           </div>
 
-          <div className="space-y-2 relative z-30">
-            <Label htmlFor="crop-type">Crop Type</Label>
-            {cropType ? (
-              <div className="flex items-center justify-between p-3.5 border border-primary/30 rounded-2xl bg-primary/5 text-primary font-medium animate-in zoom-in-95">
-                <span>{cropType}</span>
-                <Button type="button" variant="ghost" size="icon" onClick={() => setCropType('')} className="h-7 w-7 rounded-full text-primary hover:bg-primary/20">
-                  <X className="h-4 w-4" />
-                </Button>
-              </div>
-            ) : (
-              <CropSearchInput
-                placeholder="Search crop type (e.g. Tomato, Rice)..."
-                onSelect={(id, name) => setCropType(name)}
-                className="z-50"
-              />
-            )}
-          </div>
+
 
           <Button
             type="submit"
             className="w-full h-14 text-lg"
             size="lg"
-            disabled={isLoading || !preview || !cropType || !user}
+            disabled={isLoading || !preview || !user}
           >
             {isLoading ? (
               <>

@@ -14,6 +14,7 @@ import {
     ChevronLeft,
     ChevronRight,
     Leaf,
+    Sprout,
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import Logo from '@/components/logo';
@@ -47,6 +48,7 @@ const navSections: NavSection[] = [
             { href: '/crops', label: 'Crop Database', icon: Wheat },
             { href: '/farming-partner/profit-predictor', label: 'Profit Predictor', icon: TrendingUp },
             { href: '/farming-partner/crop-compare', label: 'Crop Comparison', icon: GitCompareArrows },
+            { href: '/farming-partner/crop-combination', label: 'Crop Combination', icon: Sprout },
         ],
     },
     {

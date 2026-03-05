@@ -27,6 +27,11 @@ service cloud.firestore {
       allow read, list, create, update, delete: if request.auth != null && request.auth.uid == userId;
     }
 
+    // Users can manage their own Weekly Growth Reports.
+    match /users/{userId}/weekly-growth-reports/{reportId} {
+      allow read, list, create, update, delete: if request.auth != null && request.auth.uid == userId;
+    }
+
     // Users can manage their own Harvest Optimizer reports.
     match /users/{userId}/harvest-optimizer/{reportId} {
       allow read, list, create, update, delete: if request.auth != null && request.auth.uid == userId;

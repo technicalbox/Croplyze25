@@ -21,6 +21,10 @@ import {
     type CropCompareRecord,
 } from '@/farming-partner/crop-compare-client';
 
+const MAX_CROPS = 3;
+const MIN_CROPS = 2;
+const CROP_PLACEHOLDERS = ['Rice', 'Wheat', 'Maize'];
+
 interface SelectedCrop {
     id: string;
     name: string;
@@ -50,6 +54,7 @@ export default function CropComparePage() {
         { id: '', name: '', data: null, loading: false },
     ]);
     const [saved, setSaved] = useState(false);
+    const [comparisonTriggered, setComparisonTriggered] = useState(false);
 
     useEffect(() => {
         if (!loading && !user) router.replace('/login');
@@ -58,7 +63,7 @@ export default function CropComparePage() {
     // ── Add / remove crop slots ──────────────────────────────────────────────
 
     const addSlot = () => {
-        if (crops.length < 3) {
+        if (crops.length < MAX_CROPS) {
             haptics.light();
             setCrops((prev) => [...prev, { id: '', name: '', data: null, loading: false }]);
         }
@@ -72,6 +77,10 @@ export default function CropComparePage() {
     // ── Crop selection ───────────────────────────────────────────────────────
 
     const handleSelect = useCallback(async (idx: number, cropId: string, cropName: string) => {
+        // Prevent selecting a crop that's already chosen in another slot
+        const alreadySelected = crops.some((c, i) => i !== idx && c.id === cropId);
+        if (alreadySelected) return;
+
         haptics.medium();
         setSaved(false);
 
@@ -104,7 +113,7 @@ export default function CropComparePage() {
                 )
             );
         }
-    }, []);
+    }, [crops]);
 
     // ── Derived state ────────────────────────────────────────────────────────
 
@@ -257,8 +266,8 @@ export default function CropComparePage() {
                             </p>
 
                             {crops.map((crop, idx) => (
-                                <div key={idx} className="flex items-start gap-2">
-                                    <div className="flex-1">
+                                <div key={idx} className="flex items-start gap-2" style={{ zIndex: MAX_CROPS - idx }}>
+                                    <div className="flex-1 relative" style={{ zIndex: MAX_CROPS - idx }}>
                                         {crop.id ? (
                                             <div className="flex items-center gap-2 rounded-xl border border-border dark:border-white/10 bg-white/60 dark:bg-white/5 backdrop-blur-sm px-3 py-2.5">
                                                 <div className={`w-2.5 h-2.5 rounded-full shrink-0 ${crop.loading ? 'bg-amber-400 animate-pulse' : 'bg-emerald-500'}`} />
@@ -268,6 +277,7 @@ export default function CropComparePage() {
                                                     onClick={() => {
                                                         haptics.light();
                                                         setSaved(false);
+                                                        setComparisonTriggered(false);
                                                         setCrops((prev) =>
                                                             prev.map((c, i) =>
                                                                 i === idx ? { id: '', name: '', data: null, loading: false } : c
@@ -282,15 +292,17 @@ export default function CropComparePage() {
                                         ) : (
                                             <CropSearchInput
                                                 onSelect={(id, name) => handleSelect(idx, id, name)}
-                                                placeholder={`Crop ${idx + 1} (e.g. ${idx === 0 ? 'Rice' : idx === 1 ? 'Wheat' : 'Maize'})...`}
+                                                placeholder={`Crop ${idx + 1} (e.g. ${CROP_PLACEHOLDERS[idx] ?? 'Sugarcane'})...`}
+                                                excludedCropIds={crops.filter((c) => c.id).map((c) => c.id)}
                                             />
                                         )}
                                     </div>
 
-                                    {idx === 2 && (
+                                    {/* Show remove button for slots beyond the minimum 2 */}
+                                    {idx >= MIN_CROPS && (
                                         <button
                                             onClick={() => removeSlot(idx)}
-                                            className="mt-2 text-muted-foreground hover:text-red-500 transition-colors"
+                                            className="mt-3 text-muted-foreground hover:text-red-500 transition-colors"
                                         >
                                             <X className="w-5 h-5" />
                                         </button>
@@ -298,7 +310,7 @@ export default function CropComparePage() {
                                 </div>
                             ))}
 
-                            {crops.length < 3 && (
+                            {crops.length < MAX_CROPS && (
                                 <button
                                     onClick={addSlot}
                                     className="flex items-center justify-center gap-2 py-2.5 rounded-xl border-2 border-dashed border-border dark:border-white/10 text-sm font-semibold text-muted-foreground hover:text-foreground hover:border-primary/30 transition-colors active:scale-[0.98]"
