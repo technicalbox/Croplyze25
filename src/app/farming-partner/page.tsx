@@ -3,14 +3,12 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useUser as useUserFromAuth } from '@/firebase/auth/use-user';
-import { useCollection } from '@/firebase';
 import { useChatbot } from '@/components/chatbot/chat-provider';
-import FarmSummaryReport from '@/components/dashboard/farm-summary-report';
-import type { Diagnosis } from '@/lib/types';
 import {
     Wheat, CalendarDays, Tractor, ChevronRight,
     Sprout, BarChart3, Droplets, Bug, TrendingUp, Package,
     Sparkles, ScanLine, Bot, IndianRupee, Target, Scale,
+    FileBarChart,
 } from 'lucide-react';
 import Link from 'next/link';
 import { haptics } from '@/lib/haptics';
@@ -92,6 +90,17 @@ const FARM_TOOLS = [
         shadow: 'shadow-teal-500/25',
     },
     {
+        href: '/growth-timeline?tab=weekly-report',
+        icon: FileBarChart,
+        title: 'Weekly Growth Report',
+        description: 'AI-powered weekly crop analysis with health summary, risks, and recommendations.',
+        tag: 'New',
+        features: ['Health analysis', 'Risk detection', 'Weekly insights'],
+        featureIcons: [BarChart3, Bug, Sparkles],
+        gradient: 'from-cyan-600 to-blue-700',
+        shadow: 'shadow-cyan-500/25',
+    },
+    {
         href: '/harvest-optimizer',
         icon: Tractor,
         title: 'Harvest Optimizer',
@@ -144,9 +153,6 @@ export default function FarmingPartnerHubPage() {
     const { user, loading } = useUserFromAuth();
     const router = useRouter();
     const { openChat, openChatWithMessage } = useChatbot();
-    const { data: pastDiagnoses, loading: diagnosesLoading } = useCollection<Diagnosis>(
-        user ? `users/${user.uid}/cropDiagnoses` : undefined,
-    );
 
     useEffect(() => {
         if (!loading && !user) router.replace('/login');
@@ -206,9 +212,6 @@ export default function FarmingPartnerHubPage() {
                         <span className="text-sm text-white/60">What's on your mind? Ask about crops, soil…</span>
                     </button>
                 </div>
-
-                {/* ── FARM SUMMARY REPORT ── */}
-                <FarmSummaryReport diagnoses={diagnosesLoading ? [] : (pastDiagnoses ?? [])} />
 
                 {/* ── AI TOOLS ── */}
                 <SectionDivider label="AI Tools" />

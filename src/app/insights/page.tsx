@@ -30,6 +30,7 @@ import AiInsightsPanel from '@/components/dashboard/ai-insights-panel';
 import RiskEnginePanel from '@/components/dashboard/risk-engine-panel';
 import DiseaseChart from '@/components/dashboard/disease-chart';
 import HistoryTable from '@/components/dashboard/history-table';
+import FarmSummaryReport from '@/components/dashboard/farm-summary-report';
 
 // ─── Section divider ──────────────────────────────────────────────────────────
 
@@ -191,6 +192,9 @@ export default function InsightsPage() {
             </header>
 
             <main className="flex flex-col gap-5 p-4">
+
+                {/* ── Farm Summary Report ── */}
+                <FarmSummaryReport diagnoses={pastDiagnoses ?? []} />
 
                 {/* ── KPI row ── */}
                 <div className="flex gap-3 animate-in fade-in-0 duration-300">
