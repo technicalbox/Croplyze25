@@ -14,6 +14,7 @@ export interface CropSearchInputProps {
     autoFocus?: boolean;
     className?: string;
     cropType?: string; // Optional filter (e.g. 'vegetable')
+    excludedCropIds?: string[]; // IDs of crops already selected (to prevent duplicates)
 }
 
 export function CropSearchInput({
@@ -22,6 +23,7 @@ export function CropSearchInput({
     autoFocus = false,
     className,
     cropType,
+    excludedCropIds = [],
 }: CropSearchInputProps) {
     const { language } = useTranslation();
 
@@ -64,7 +66,10 @@ export function CropSearchInput({
     };
 
     const handleSelect = (crop: CropDocument) => {
-        const name = getDisplayName(crop).replace(/ \(.+\)$/, ''); // Strip the english fallback for the selection UI
+        const langName = crop.commonNames[activeLang];
+        // Use the regional language name if it exists and is different from English,
+        // otherwise use the full English name (which may include aliases like "Maize (Corn)")
+        const name = (langName && langName !== crop.commonNames.en) ? langName : crop.commonNames.en;
         setQuery('');
         setIsFocused(false);
         onSelect(crop.id, name);
@@ -116,8 +121,8 @@ export function CropSearchInput({
                         className="absolute top-[calc(100%+8px)] left-0 right-0 w-full bg-white/90 dark:bg-[#1a1c1e]/90 backdrop-blur-2xl border border-white/20 dark:border-white/10 rounded-2xl shadow-xl overflow-hidden flex flex-col max-h-[300px]"
                     >
                         <div className="flex-1 overflow-y-auto no-scrollbar scroll-smooth p-2">
-                            {results.length > 0 ? (
-                                results.map((crop) => {
+                            {results.filter((crop) => !excludedCropIds.includes(crop.id)).length > 0 ? (
+                                results.filter((crop) => !excludedCropIds.includes(crop.id)).map((crop) => {
                                     const firstLetter = (crop.commonNames?.en || crop.id || '?')[0].toUpperCase();
                                     const colors = [
                                         'bg-emerald-500', 'bg-orange-500', 'bg-blue-500', 'bg-rose-500',

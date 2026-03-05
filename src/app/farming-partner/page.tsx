@@ -133,6 +133,17 @@ const FARM_TOOLS = [
         gradient: 'from-sky-600 to-blue-700',
         shadow: 'shadow-sky-500/25',
     },
+    {
+        href: '/farming-partner/crop-combination',
+        icon: Sprout,
+        title: 'Crop Combination',
+        description: 'Find crops that grow well together for better yield & soil health.',
+        tag: 'New',
+        features: ['Companion crops', 'Pest reduction', 'Yield boost'],
+        featureIcons: [Sprout, Bug, TrendingUp],
+        gradient: 'from-emerald-600 to-lime-700',
+        shadow: 'shadow-emerald-500/25',
+    },
 ];
 
 // ─── Section divider ──────────────────────────────────────────────────────────

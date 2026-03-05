@@ -8,7 +8,7 @@ export const CROP_NAMES: CropEntry[] = [
     // ── CEREALS & MILLETS (35) ──
     { name: "Rice", scientific: "Oryza sativa", category: "grain" },
     { name: "Wheat", scientific: "Triticum aestivum", category: "grain" },
-    { name: "Maize", scientific: "Zea mays", category: "grain" },
+    { name: "Maize (Corn)", scientific: "Zea mays", category: "grain" },
     { name: "Barley", scientific: "Hordeum vulgare", category: "grain" },
     { name: "Oats", scientific: "Avena sativa", category: "grain" },
     { name: "Sorghum (Jowar)", scientific: "Sorghum bicolor", category: "grain" },
@@ -382,7 +382,7 @@ export const CROP_NAMES: CropEntry[] = [
     { name: "Para Grass", scientific: "Brachiaria mutica", category: "fodder" },
     { name: "Signal Grass", scientific: "Brachiaria decumbens", category: "fodder" },
     { name: "Oat Fodder", scientific: "Avena sativa", category: "fodder" },
-    { name: "Maize Fodder", scientific: "Zea mays", category: "fodder" },
+    { name: "Maize Fodder (Corn)", scientific: "Zea mays", category: "fodder" },
     { name: "Cowpea Fodder", scientific: "Vigna unguiculata", category: "fodder" },
     { name: "Sorghum Fodder", scientific: "Sorghum bicolor", category: "fodder" },
     { name: "Stylo", scientific: "Stylosanthes hamata", category: "fodder" },
