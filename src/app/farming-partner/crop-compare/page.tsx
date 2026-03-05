@@ -84,6 +84,10 @@ export default function CropComparePage() {
     // ── Crop selection ───────────────────────────────────────────────────────
 
     const handleSelect = useCallback(async (idx: number, cropId: string, cropName: string) => {
+        // Prevent selecting a crop that's already chosen in another slot
+        const alreadySelected = crops.some((c, i) => i !== idx && c.id === cropId);
+        if (alreadySelected) return;
+
         haptics.medium();
         setSaved(false);
         setComparisonTriggered(false);
@@ -117,7 +121,7 @@ export default function CropComparePage() {
                 )
             );
         }
-    }, []);
+    }, [crops]);
 
     // ── Derived state ────────────────────────────────────────────────────────
 
@@ -313,6 +317,7 @@ export default function CropComparePage() {
                                                 <CropSearchInput
                                                     onSelect={(id, name) => handleSelect(idx, id, name)}
                                                     placeholder={`Crop ${idx + 1} (e.g. ${CROP_PLACEHOLDERS[idx] ?? 'Sugarcane'})...`}
+                                                    excludedCropIds={crops.filter((c) => c.id).map((c) => c.id)}
                                                 />
                                             )}
                                         </div>
