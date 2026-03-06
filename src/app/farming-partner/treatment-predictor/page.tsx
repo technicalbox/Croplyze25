@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { ArrowLeft, FlaskConical, Loader2, RotateCcw, ChevronRight, Bug } from 'lucide-react';
+import { ArrowLeft, FlaskConical, Loader2, RotateCcw, ChevronRight, Bug, PlusCircle, History } from 'lucide-react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
@@ -24,6 +24,9 @@ import AlternativeSuggestions from '@/components/treatment-predictor/alternative
 import { CropSearchInput } from '@/components/crops/CropSearchInput';
 import { DiseaseSearchInput } from '@/components/treatment-predictor/disease-search-input';
 import type { TreatmentOutcomePredictorOutput } from '@/ai/flows/treatment-outcome-predictor-flow';
+import { saveTreatmentPrediction, listTreatmentPredictions, deleteTreatmentPrediction } from '@/farming-partner/treatment-predictor-client';
+import type { TreatmentPredictionRecord } from '@/farming-partner/treatment-predictor-client';
+import SavedPlansList from '@/components/common/saved-plans-list';
 
 // ── Types ─────────────────────────────────────────────────────────────────────
 
@@ -35,6 +38,19 @@ interface IdentifiedMedicine {
 }
 
 type Step = 'medicine' | 'context' | 'result';
+type Tab = 'new' | 'history';
+
+/** Convert a TreatmentPredictionRecord to display metadata for the history list. */
+function recordToMeta(record: TreatmentPredictionRecord) {
+    const score = record.prediction?.suitabilityScore;
+    const control = record.prediction?.diseaseControlLevel ?? '';
+    return {
+        id: record.id ?? record.createdAt.toString(),
+        title: `${record.medicineName} → ${record.cropType}`,
+        subtitle: `${record.diseaseName} · Score: ${score ?? '—'}/100 · ${control} control`,
+        createdAt: record.createdAt,
+    };
+}
 
 // ── Soil / weather / season options ───────────────────────────────────────────
 
@@ -49,7 +65,8 @@ export default function TreatmentPredictorPage() {
     const { user, loading } = useUserFromAuth();
     const router = useRouter();
 
-    // Step state
+    // Tab & Step state
+    const [tab, setTab] = useState<Tab>('new');
     const [step, setStep] = useState<Step>('medicine');
 
     // Medicine state
@@ -123,6 +140,22 @@ export default function TreatmentPredictorPage() {
             haptics.success();
             setPrediction(data.prediction);
             setStep('result');
+
+            // Save to Firestore (fire-and-forget)
+            saveTreatmentPrediction({
+                userId: user.uid,
+                medicineName: medicine.medicineName,
+                activeIngredient: medicine.activeIngredient,
+                category: medicine.category,
+                cropType,
+                diseaseName,
+                soilType,
+                weatherConditions: weather,
+                season,
+                ...(severity ? { severityLevel: severity } : {}),
+                prediction: data.prediction,
+                createdAt: Date.now(),
+            }).catch((err) => console.error('[treatment-predictor] Failed to save to Firestore:', err));
         } catch (err) {
             haptics.error();
             setError(err instanceof Error ? err.message : 'Something went wrong. Please try again.');
@@ -134,6 +167,7 @@ export default function TreatmentPredictorPage() {
     const handleReset = () => {
         haptics.light();
         setStep('medicine');
+        setTab('new');
         setMedicine(null);
         setPrediction(null);
         setCropType('');
@@ -143,6 +177,24 @@ export default function TreatmentPredictorPage() {
         setSeason('');
         setSeverity('');
         setError(null);
+    };
+
+    /** When user selects a record from history, show its result. */
+    const handleHistorySelect = (record: TreatmentPredictionRecord) => {
+        setMedicine({
+            medicineName: record.medicineName,
+            activeIngredient: record.activeIngredient,
+            category: record.category,
+            source: 'search',
+        });
+        setCropType(record.cropType);
+        setDiseaseName(record.diseaseName);
+        setSoilType(record.soilType);
+        setWeather(record.weatherConditions);
+        setSeason(record.season);
+        setSeverity((record.severityLevel as typeof severity) || '');
+        setPrediction(record.prediction);
+        setStep('result');
     };
 
     const contextComplete = cropType && diseaseName && soilType && weather && season;
@@ -173,8 +225,32 @@ export default function TreatmentPredictorPage() {
                 )}
             </header>
 
-            {/* Step indicator */}
-            <div className="flex items-center gap-0 px-4 py-3 border-b bg-background/80 backdrop-blur-sm">
+            {/* Tab bar — shown only when not in multi-step flow */}
+            {step === 'medicine' && (
+                <div className="flex border-b bg-background/80 backdrop-blur-sm px-4 gap-1">
+                    {([
+                        { id: 'new', label: 'New Analysis', icon: PlusCircle },
+                        { id: 'history', label: 'History', icon: History },
+                    ] as { id: Tab; label: string; icon: React.ElementType }[]).map(({ id, label, icon: Icon }) => (
+                        <button
+                            key={id}
+                            onClick={() => { haptics.light(); setTab(id); }}
+                            className={cn(
+                                'flex items-center gap-1.5 px-3 py-3 text-xs font-semibold border-b-2 transition-colors',
+                                tab === id
+                                    ? 'border-primary text-primary'
+                                    : 'border-transparent text-muted-foreground hover:text-foreground',
+                            )}
+                        >
+                            <Icon className="h-3.5 w-3.5" />
+                            {label}
+                        </button>
+                    ))}
+                </div>
+            )}
+
+            {/* Step indicator — shown only in new analysis flow */}
+            {tab === 'new' && <div className="flex items-center gap-0 px-4 py-3 border-b bg-background/80 backdrop-blur-sm">
                 {(['medicine', 'context', 'result'] as Step[]).map((s, i) => (
                     <div key={s} className="flex items-center">
                         <div
@@ -200,11 +276,24 @@ export default function TreatmentPredictorPage() {
                         {i < 2 && <ChevronRight className="h-3.5 w-3.5 text-muted-foreground/40 mx-1" />}
                     </div>
                 ))}
-            </div>
+            </div>}
 
             <main className="flex flex-col gap-6 p-4 pb-28">
+                {/* ── History Tab ── */}
+                {tab === 'history' && step === 'medicine' && (
+                    <SavedPlansList<TreatmentPredictionRecord>
+                        userId={user.uid}
+                        loader={listTreatmentPredictions}
+                        toMeta={recordToMeta}
+                        onDelete={deleteTreatmentPrediction}
+                        onSelect={handleHistorySelect}
+                        title="Past Predictions"
+                        emptyLabel="No saved predictions yet. Run your first treatment analysis above."
+                    />
+                )}
+
                 {/* ── Step 1: Medicine Input ── */}
-                {step === 'medicine' && (
+                {tab === 'new' && step === 'medicine' && (
                     <div className="animate-slide-up-fade">
                         <div className="mb-4">
                             <h2 className="text-lg font-bold">Select Medicine</h2>
