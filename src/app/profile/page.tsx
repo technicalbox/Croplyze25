@@ -14,7 +14,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import {
     Loader2, Edit, User as UserIcon, LogOut, Sun, Moon, Bell,
     MapPin, Tractor, Droplets, Mountain, Download, WifiOff, Info,
-    ChevronRight, Leaf, FlaskConical, ExternalLink, Shield, Sparkles,
+    ChevronRight, Leaf, FlaskConical, ExternalLink, Shield,
 } from 'lucide-react';
 import { motion, useAnimation } from 'framer-motion';
 import { haptics } from '@/lib/haptics';
@@ -143,7 +143,7 @@ export default function ProfilePage() {
 
     const [isEditSheetOpen, setIsEditSheetOpen] = useState(false);
     const [isOfflineSheetOpen, setIsOfflineSheetOpen] = useState(false);
-    const [demoMode, setDemoMode] = useLocalStorage<boolean>('croplyze_demo_mode', false);
+
 
     // ── Firestore profile data ───────────────────────────────────────────────
     const [profileData, setProfileData] = useState<UserDocument | null>(null);
@@ -235,11 +235,6 @@ export default function ProfilePage() {
             {/* ── Header ── */}
             <header className="sticky top-0 z-30 flex h-16 items-center justify-between px-4 bg-background/80 backdrop-blur-sm border-b">
                 <h1 className="text-xl font-bold">Me</h1>
-                {demoMode && (
-                    <span className="flex items-center gap-1 text-[10px] font-bold px-2.5 py-1 rounded-full bg-primary/15 text-primary border border-primary/20">
-                        <Sparkles className="h-3 w-3" />DEMO
-                    </span>
-                )}
             </header>
 
             <main className="flex flex-col gap-4 p-4">
@@ -382,28 +377,6 @@ export default function ProfilePage() {
                     </SettingsGroup>
                 </div>
 
-                {/* ── Demo Mode ── */}
-                <div>
-                    <p className="text-[11px] font-bold text-muted-foreground uppercase tracking-wider mb-2">🎭 Demo Mode</p>
-                    <SettingsGroup>
-                        <SettingsRow
-                            icon={<Sparkles className="h-4 w-4" />}
-                            label="Demo Mode"
-                            sub={demoMode ? 'Active — ideal for judges & investors' : 'Shows DEMO badge in header'}
-                            right={
-                                <Switch
-                                    checked={demoMode}
-                                    onCheckedChange={v => { setDemoMode(v); haptics.light(); }}
-                                />
-                            }
-                        />
-                    </SettingsGroup>
-                    {demoMode && (
-                        <p className="text-[11px] text-primary/80 mt-1.5 px-1">
-                            ✨ Demo mode is active. A "DEMO" badge appears in the header so judges can identify this is a live demo.
-                        </p>
-                    )}
-                </div>
 
                 {/* ── About ── */}
                 <div>
