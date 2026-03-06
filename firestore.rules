@@ -61,6 +61,11 @@ service cloud.firestore {
       allow read, list, create, update, delete: if request.auth != null && request.auth.uid == userId;
     }
 
+    // Users can manage their own Weather Alerts.
+    match /users/{userId}/weather_alerts/{alertId} {
+      allow read, list, create, update, delete: if request.auth != null && request.auth.uid == userId;
+    }
+
     // Public read access to the master crop intelligence database.
     match /crops/{cropId} {
       allow read, list: if true; 

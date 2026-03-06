@@ -153,6 +153,7 @@ export default function DesktopSidebar({ collapsed, onToggle }: DesktopSidebarPr
             {/* ── Collapse toggle ── */}
             <div className="border-t border-border p-3 flex-shrink-0">
                 <button
+                    suppressHydrationWarning
                     onClick={onToggle}
                     className={cn(
                         'flex items-center gap-2 w-full rounded-xl px-3 py-2.5',

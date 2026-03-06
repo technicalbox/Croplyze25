@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 import { Bell, MapPin, Navigation, LogOut, User, ChevronDown } from 'lucide-react';
 import { useRegion } from '@/providers/region-provider';
 import RegionSelector from '@/components/region/RegionSelector';
@@ -48,6 +49,7 @@ export default function DesktopHeader() {
             <header className="hidden lg:flex items-center h-16 px-6 border-b border-border bg-card backdrop-blur-sm sticky top-0 z-40 gap-4 flex-shrink-0">
                 {/* ── Region display (clickable) ── */}
                 <button
+                    suppressHydrationWarning
                     onClick={() => setRegionSelectorOpen(true)}
                     className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-primary/10 hover:bg-primary/15 transition-colors flex-shrink-0 max-w-[200px]"
                 >
@@ -76,19 +78,22 @@ export default function DesktopHeader() {
 
                 {/* ── Right section ── */}
                 <div className="flex items-center gap-3 flex-shrink-0">
-                    {/* Notifications */}
-                    <button
+                    {/* Notifications — links to /alerts */}
+                    <Link
+                        href="/alerts"
+                        suppressHydrationWarning
                         className="relative w-9 h-9 rounded-xl flex items-center justify-center bg-muted/50 hover:bg-muted transition-colors duration-150"
-                        title="Notifications"
+                        title="Alerts"
                     >
                         <Bell className="h-4.5 w-4.5 text-muted-foreground" />
                         {/* Unread dot */}
                         <span className="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-primary border-2 border-card" />
-                    </button>
+                    </Link>
 
                     {/* User avatar dropdown */}
                     <div className="relative" ref={dropdownRef} style={{ zIndex: 200 }}>
                         <button
+                            suppressHydrationWarning
                             onClick={() => setDropdownOpen(!dropdownOpen)}
                             className="flex items-center gap-2 rounded-xl px-2 py-1.5 hover:bg-muted/50 transition-colors duration-150"
                         >
@@ -112,12 +117,14 @@ export default function DesktopHeader() {
                                     <p className="text-xs text-muted-foreground truncate">{user?.email}</p>
                                 </div>
                                 <button
+                                    suppressHydrationWarning
                                     onClick={() => { setDropdownOpen(false); router.push('/profile'); }}
                                     className="w-full flex items-center gap-2 px-3 py-2 text-sm text-foreground hover:bg-muted transition-colors"
                                 >
                                     <User className="h-4 w-4" /> Profile
                                 </button>
                                 <button
+                                    suppressHydrationWarning
                                     onClick={handleLogout}
                                     className="w-full flex items-center gap-2 px-3 py-2 text-sm text-destructive hover:bg-destructive/10 transition-colors"
                                 >
