@@ -3,13 +3,14 @@
 /**
  * @fileOverview Risk Engine Panel — displays 3 AI-powered risk predictions.
  *
- * Fetches from POST /api/risk-engine on mount (or when diagnoses change).
- * Shows animated arc gauges while loading, then fills in Gemini-enriched data.
+ * User-triggered: shows a CTA button. Only calls POST /api/risk-engine when
+ * the user explicitly requests it, avoiding unnecessary API usage.
  */
 
-import { useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
 import { cn } from '@/lib/utils';
-import { ShieldAlert, TrendingDown, CloudLightning, AlertTriangle } from 'lucide-react';
+import { ShieldAlert, TrendingDown, CloudLightning, AlertTriangle, Zap } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 import type { Diagnosis } from '@/lib/types';
 import type { RiskEngineOutput } from '@/ai/flows/risk-engine-flow';
 
@@ -147,12 +148,12 @@ export default function RiskEnginePanel({ diagnoses }: RiskEnginePanelProps) {
     const [data, setData] = useState<RiskEngineOutput | null>(null);
     const [error, setError] = useState<string | null>(null);
     const [loading, setLoading] = useState(false);
-    const fetchedRef = useRef(false);
+    const [activated, setActivated] = useState(false);
 
-    useEffect(() => {
-        // Only fetch once per mount (avoid re-running on every render)
-        if (fetchedRef.current) return;
-        fetchedRef.current = true;
+    const runRiskAnalysis = () => {
+        setActivated(true);
+        setError(null);
+        setData(null);
 
         const primaryCrop = diagnoses[0]?.cropType ?? 'wheat';
 
@@ -176,7 +177,7 @@ export default function RiskEnginePanel({ diagnoses }: RiskEnginePanelProps) {
             })
             .catch(e => setError(e.message))
             .finally(() => setLoading(false));
-    }, []); // eslint-disable-line react-hooks/exhaustive-deps
+    };
 
     return (
         <div className="flex flex-col gap-3 animate-in fade-in-0 slide-in-from-bottom-2 duration-500">
@@ -188,6 +189,29 @@ export default function RiskEnginePanel({ diagnoses }: RiskEnginePanelProps) {
                 </span>
                 <div className="flex-1 h-px bg-border dark:bg-white/10" />
             </div>
+
+            {/* CTA — shown when not yet activated or when user wants to re-run */}
+            {!activated && (
+                <div className="rounded-2xl border border-dashed border-primary/30 bg-primary/5 p-6 flex flex-col items-center gap-3 text-center">
+                    <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center">
+                        <Zap className="h-6 w-6 text-primary" />
+                    </div>
+                    <div>
+                        <p className="text-sm font-semibold text-foreground">AI Risk Analysis</p>
+                        <p className="text-xs text-muted-foreground mt-1 max-w-[260px]">
+                            Analyze your crop scan history to predict disease, yield, and weather risks using AI.
+                        </p>
+                    </div>
+                    <Button
+                        onClick={runRiskAnalysis}
+                        className="rounded-xl gap-2 mt-1"
+                        size="sm"
+                    >
+                        <Zap className="h-4 w-4" />
+                        Run Risk Analysis
+                    </Button>
+                </div>
+            )}
 
             {loading && (
                 <>
@@ -231,6 +255,17 @@ export default function RiskEnginePanel({ diagnoses }: RiskEnginePanelProps) {
                         label={data.weatherDamageRisk.label}
                         advice={data.weatherDamageRisk.advice}
                     />
+
+                    {/* Re-run button */}
+                    <Button
+                        onClick={runRiskAnalysis}
+                        variant="outline"
+                        size="sm"
+                        className="rounded-xl gap-2 self-center mt-1"
+                    >
+                        <Zap className="h-3.5 w-3.5" />
+                        Re-run Analysis
+                    </Button>
                 </>
             )}
         </div>
