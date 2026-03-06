@@ -1,40 +1,70 @@
 /**
- * @fileOverview Shared types for the Early Outbreak Alert system.
- * Used across the alert service, API route, AI flow, and UI components.
+ * @fileOverview Shared types for the comprehensive Alerts system.
+ * Supports 9 alert categories with extensible structure.
  */
 
-// ── Alert severity & type enums ──────────────────────────────────────────────
+// ── Alert severity ───────────────────────────────────────────────────────────
 
-export type AlertSeverity = 'critical' | 'warning' | 'info';
-export type AlertType = 'disease' | 'weather' | 'irrigation';
+export type AlertSeverity = 'critical' | 'high' | 'moderate' | 'low';
+
+// ── Alert categories ─────────────────────────────────────────────────────────
+
+export type AlertCategory =
+    | 'weather'
+    | 'crop_risk'
+    | 'pest_disease'
+    | 'irrigation'
+    | 'harvest'
+    | 'market'
+    | 'government'
+    | 'farm_task'
+    | 'disaster';
+
+// ── Category metadata (for display) ─────────────────────────────────────────
+
+export interface CategoryMeta {
+    id: AlertCategory;
+    label: string;
+    emoji: string;
+}
+
+export const ALERT_CATEGORIES: CategoryMeta[] = [
+    { id: 'weather', label: 'Weather', emoji: '🌦' },
+    { id: 'crop_risk', label: 'Crop Risk', emoji: '🌾' },
+    { id: 'pest_disease', label: 'Pest & Disease', emoji: '🐛' },
+    { id: 'irrigation', label: 'Irrigation', emoji: '💧' },
+    { id: 'harvest', label: 'Harvest', emoji: '🌻' },
+    { id: 'market', label: 'Market Price', emoji: '📈' },
+    { id: 'government', label: 'Govt. Schemes', emoji: '🏛' },
+    { id: 'farm_task', label: 'Farm Tasks', emoji: '📋' },
+    { id: 'disaster', label: 'Disaster', emoji: '🚨' },
+];
 
 // ── Data source attribution ──────────────────────────────────────────────────
 
 export interface DataSource {
-    name: string;           // e.g. "NASA POWER", "OpenWeatherMap"
-    url?: string;           // link to the source
-    description: string;    // e.g. "Satellite-derived weather data"
+    name: string;
+    url?: string;
+    description: string;
 }
 
 // ── Weather data from APIs ───────────────────────────────────────────────────
 
 export interface WeatherData {
-    temperature: number;        // °C
-    humidity: number;           // %
-    windSpeed: number;          // m/s
-    rainfall24h: number;        // mm in last 24h
-    forecastRain48h: number;    // mm expected in next 48h
-    description: string;        // e.g. "light rain"
+    temperature: number;
+    humidity: number;
+    windSpeed: number;
+    rainfall24h: number;
+    forecastRain48h: number;
+    description: string;
     source: DataSource;
-    fetchedAt: number;          // timestamp ms
+    fetchedAt: number;
 }
 
-// ── NASA POWER climate data ──────────────────────────────────────────────────
-
 export interface NASAPowerData {
-    avgTemperature: number;     // °C (recent days average)
-    avgHumidity: number;        // %
-    totalPrecipitation: number; // mm (recent days total)
+    avgTemperature: number;
+    avgHumidity: number;
+    totalPrecipitation: number;
     source: DataSource;
     fetchedAt: number;
 }
@@ -43,16 +73,21 @@ export interface NASAPowerData {
 
 export interface OutbreakAlert {
     id: string;
-    type: AlertType;
+    type: string;               // sub-type e.g. "heavy_rain", "blight_risk"
+    category: AlertCategory;
     severity: AlertSeverity;
     title: string;
     message: string;
     details: string;
     action: string;
-    timestamp: string;          // human-readable relative time
-    generatedAt: number;        // timestamp ms
-    source: DataSource;         // which data source drove this alert
-    thresholds?: {              // the conditions that triggered the alert
+    crop?: string;
+    timestamp: string;
+    generatedAt: number;
+    expiresAt: number;
+    source: DataSource;
+    location?: string;
+    read?: boolean;
+    thresholds?: {
         metric: string;
         value: number;
         threshold: number;
@@ -60,13 +95,13 @@ export interface OutbreakAlert {
     }[];
 }
 
-// ── Alert request/response ───────────────────────────────────────────────────
+// ── API request/response ─────────────────────────────────────────────────────
 
 export interface AlertRequest {
     lat: number;
     lng: number;
     cropType: string;
-    region?: string;            // "city, state, country"
+    region?: string;
     soilType?: string;
 }
 
@@ -76,4 +111,25 @@ export interface AlertResponse {
     nasaPower: NASAPowerData | null;
     generatedAt: number;
     error?: string;
+}
+
+// ── Firestore document shape ─────────────────────────────────────────────────
+
+export interface AlertDocument {
+    id?: string;
+    userId: string;
+    alert_type: string;
+    category: AlertCategory;
+    title: string;
+    description: string;
+    severity: AlertSeverity;
+    crop?: string;
+    location: string;
+    created_at: number;
+    expires_at: number;
+    read_status: boolean;
+    source_name: string;
+    source_url?: string;
+    details: string;
+    action: string;
 }

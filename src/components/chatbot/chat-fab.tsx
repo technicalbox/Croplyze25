@@ -17,6 +17,7 @@ export default function ChatFab() {
         // Wrapper: overflow-visible so badge is never clipped
         <div className="fixed bottom-20 right-4 z-40">
             <button
+                suppressHydrationWarning
                 id="chat-fab"
                 onClick={() => { haptics.medium(); openChat(); }}
                 aria-label="Open Fasal AI chat"

@@ -86,6 +86,7 @@ export function CropSearchInput({
                 <Search className="flex-shrink-0 w-5 h-5 text-gray-400 dark:text-gray-500 mr-3" />
 
                 <input
+                    suppressHydrationWarning
                     ref={inputRef}
                     type="text"
                     value={query}

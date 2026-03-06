@@ -5,6 +5,7 @@ import { Bell, User, Wheat, ChevronRight, CalendarDays, Tractor, MapPin, Navigat
 import AlertBanner from "@/components/dashboard/alert-banner";
 import QuickActions from "@/components/dashboard/quick-actions";
 import LatestScanCard from "@/components/dashboard/latest-scan-card";
+import WeatherAlertsPanel from "@/components/dashboard/weather-alerts-panel";
 import { useCollection } from "@/firebase";
 import { Diagnosis } from "@/lib/types";
 import { useRouter } from 'next/navigation';
@@ -100,6 +101,11 @@ export default function DashboardPage() {
                 {/* ── Alert Banner ── */}
                 <div className="animate-slide-up-fade delay-[75ms] mt-2 z-10 relative">
                     <AlertBanner />
+                </div>
+
+                {/* ── Weather Alerts ── */}
+                <div className="animate-slide-up-fade delay-100">
+                    <WeatherAlertsPanel />
                 </div>
 
                 {/* ── Quick Actions ── */}
