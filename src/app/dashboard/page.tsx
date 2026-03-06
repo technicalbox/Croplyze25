@@ -1,7 +1,7 @@
 'use client';
 
 import { Button } from "@/components/ui/button";
-import { Bell, User, Wheat, ChevronRight, CalendarDays, Tractor, MapPin, Navigation, IndianRupee, Scale } from "lucide-react";
+import { Bell, User, Wheat, ChevronRight, CalendarDays, Tractor, MapPin, Navigation, IndianRupee, Scale, FlaskConical } from "lucide-react";
 import AlertBanner from "@/components/dashboard/alert-banner";
 import QuickActions from "@/components/dashboard/quick-actions";
 import LatestScanCard from "@/components/dashboard/latest-scan-card";
@@ -157,22 +157,22 @@ export default function DashboardPage() {
                     </Link>
                 </div>
 
-                {/* Harvest Optimizer + Profit Predictor — side by side */}
+                {/* Treatment Predictor + Profit Predictor — side by side */}
                 <div className="grid grid-cols-2 gap-3 animate-slide-up-fade delay-300">
-                    <Link href="/harvest-optimizer" className="block active:scale-[0.97] transition-transform duration-150">
-                        <div className="h-full rounded-2xl overflow-hidden relative bg-gradient-to-br from-amber-600 to-orange-700 text-white shadow-md shadow-amber-500/20">
+                    <Link href="/farming-partner/treatment-predictor" className="block active:scale-[0.97] transition-transform duration-150">
+                        <div className="h-full rounded-2xl overflow-hidden relative bg-gradient-to-br from-rose-600 to-red-700 text-white shadow-md shadow-rose-500/20">
                             <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(circle at 80% 20%, white 0%, transparent 60%)' }} />
                             <div className="relative flex flex-col gap-3 p-4">
                                 <div className="flex items-center justify-between">
                                     <div className="flex items-center justify-center w-9 h-9 rounded-xl bg-white/20">
-                                        <Tractor className="h-5 w-5 text-white" />
+                                        <FlaskConical className="h-5 w-5 text-white" />
                                     </div>
                                     <span className="text-[9px] font-bold bg-white/20 px-1.5 py-0.5 rounded-full">NEW</span>
                                 </div>
                                 <div>
-                                    <p className="text-[10px] font-semibold text-white/60 uppercase tracking-wider">Optimizer</p>
-                                    <h2 className="text-sm font-bold leading-tight mt-0.5">Harvest</h2>
-                                    <p className="text-[11px] text-white/70 mt-1 leading-snug">Timing, yield & market tips</p>
+                                    <p className="text-[10px] font-semibold text-white/60 uppercase tracking-wider">Predictor</p>
+                                    <h2 className="text-sm font-bold leading-tight mt-0.5">Treatment</h2>
+                                    <p className="text-[11px] text-white/70 mt-1 leading-snug">Medicine & treatment success</p>
                                 </div>
                             </div>
                         </div>
@@ -209,6 +209,24 @@ export default function DashboardPage() {
                             <div className="flex-1 min-w-0">
                                 <p className="text-xs font-bold leading-tight">Crop Compare</p>
                                 <p className="text-[10px] text-white/60">Compare 2–3 crops side-by-side</p>
+                            </div>
+                            <span className="text-[9px] font-bold bg-white/20 px-1.5 py-0.5 rounded-full shrink-0">NEW</span>
+                            <ChevronRight className="h-4 w-4 text-white/40 shrink-0" />
+                        </div>
+                    </div>
+                </Link>
+
+                {/* Harvest Optimizer — compact full-width link (like Crop Compare) */}
+                <Link href="/harvest-optimizer" className="block active:scale-[0.98] transition-transform duration-150 animate-slide-up-fade delay-300">
+                    <div className="w-full rounded-2xl overflow-hidden relative bg-gradient-to-r from-amber-600 to-orange-700 text-white shadow-md shadow-amber-500/20">
+                        <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(circle at 85% 30%, white 0%, transparent 65%)' }} />
+                        <div className="relative flex items-center gap-3 px-4 py-3">
+                            <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-white/20 shrink-0">
+                                <Tractor className="h-4 w-4 text-white" />
+                            </div>
+                            <div className="flex-1 min-w-0">
+                                <p className="text-xs font-bold leading-tight">Harvest Optimizer</p>
+                                <p className="text-[10px] text-white/60">Timing, yield & market tips</p>
                             </div>
                             <span className="text-[9px] font-bold bg-white/20 px-1.5 py-0.5 rounded-full shrink-0">NEW</span>
                             <ChevronRight className="h-4 w-4 text-white/40 shrink-0" />
